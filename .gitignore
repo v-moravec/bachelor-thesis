@@ -12,6 +12,7 @@
 _minted-ctufit-thesis/
 *.out
 *.pdf
+!BP_Moravec_Vojtech_2022.pdf
 *.ps
 *.run.xml
 *.toc
