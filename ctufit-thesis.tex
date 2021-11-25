@@ -2,7 +2,6 @@
 % arara: biber
 % arara: xelatex: { shell: yes }
 % arara: xelatex: { shell: yes }
-% arara: xelatex: { shell: yes }
 
 %% This is the ctufit-thesis example file. It is used to produce theses
 %% for submission to Czech Technical University, Faculty of Information Technology.
@@ -49,7 +48,7 @@
 \ctufityear{2022} % replace with the year of your defence
 \ctufitdeclarationplace{Praze} % replace with the place where you sign the declaration
 \ctufitdeclarationdate{\today} % replace with the date of signature of the declaration
-\ctufitabstractCZE{Fill in abstract of this thesis in Czech language. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Cras pede libero, dapibus nec, pretium sit amet, tempor quis. Sed vel lectus. Donec odio tempus molestie, porttitor ut, iaculis quis, sem. Suspendisse sagittis ultrices augue.}
+\ctufitabstractCZE{\input{text/abstract-cze}}
 \ctufitabstractENG{Fill in abstract of this thesis in English language. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Cras pede libero, dapibus nec, pretium sit amet, tempor quis. Sed vel lectus. Donec odio tempus molestie, porttitor ut, iaculis quis, sem. Suspendisse sagittis ultrices augue.}
 \ctufitkeywordsCZE{frontend, Vue, Vuetify, recepty na vaření, webová aplikace, serverless, Firebase} % TODO: Specifikovat recepty.
 \ctufitkeywordsENG{frontend, Vue, Vuetify, recipes, web app, serverless, Firebase}
@@ -237,6 +236,9 @@
 \include{text/research-interviews}
 \include{text/technologies}
 \include{text/rohlik-kosik-api}
+\include{text/implementation}
+\include{text/testing}
+\include{text/conslucion}
 
 % \include{text/examples} % include `examples.tex' from `text/' subdirectory
 
