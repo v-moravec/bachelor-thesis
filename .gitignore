@@ -17,5 +17,6 @@ _minted-ctufit-thesis/
 *.ps
 *.run.xml
 *.toc
+*.xdv
 
 .idea/
