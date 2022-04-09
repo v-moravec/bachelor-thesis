@@ -2,8 +2,41 @@
 %! Date = 25.11.2021
 
 \chapter{Implementace}
+Tato kapitola popisuje tvoření protypu aplikace od založení projektu po vydání první verze. Zmíním zajímavé problémy,
+které během implementace nastaly a jak jsem je řešil. Vše staví na předchozích kapitolách, tedy analýze, návrhu a použití
+technologií, které jsem představil dříve.
 
 \section{Založení projektu}
+Před touto prací jsem neměl žádné zkušenosti se zakládáním větších projektů. Domluvil jsem se tedy s vedoucím a společně
+jsme založili projekt pro \emph{Vue} aplikaci. Měli jsme již připravený \emph{Github} repozitář, ve kterém jsme projekt
+verzovali.
+
+Pro založení jsme využili \emph{vue ui}, což je grafické rozhraní pro správu \emph{Vue} projektů. Zde jsme zvolili konfiguraci
+a přidali pluginy. Poté bylo potřeba některé z nich inicializovat.
+
+\subsection{Firebase}
+Nejdříve jsme založili projekt ve \emph{Firebase}. Stačí se přihlásit, otevřít konzoli a kliknout na tlačítko pro vytvoření projektu.
+Poté se zadá název, popřípadě se projde konfigurací \emph{Google Analytics}. Rovnou jsme přešli na \emph{Blaze plan}, díky kterému
+se otevřelo více možností. Je ale potřeba si kontrolovat, že aplikace nepřesáhne žádné limity~\cite{FirebaseLimits}, jinak se strhne
+částka ze zadané platební karty.
+
+Po založení se do projektu přidá aplikace. Díky tomu \emph{Firebase} vygeneruje kód, který se musí do aplikace přidat.
+
+
+\begin{listing}
+    \caption{Zbytečný kód}\label{list:8-6}
+    \begin{minted}{C}
+    #include<stdio.h>
+    #include<iostream>
+    // A comment
+    int main(void)
+    {
+        printf("Hello World\n");
+        return 0;
+    }
+    \end{minted}
+\end{listing}
+
 
 \section{Struktura projektu}
 
