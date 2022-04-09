@@ -38,3 +38,22 @@ Při \mintinline{console}|firebase init| se vytvoří \emph{yml} soubory v slož
 \section{Struktura projektu}
 
 \section{Tvoření komponent}
+
+\section{Firebase}
+
+\subsection{Firebase Auth}
+\emph{Firebase} dokáže řešit i přihlášení uživatele. Nejprve jsem chtěl mít dva způsoby přihlášení, přes email a heslo a přes
+Google. Nakonec po domluvě s vedoucím jsem zvolil prozatím ponechat pouze Google přihlášení, abychom nemuseli řešit ukládání
+dat uživatele jinam než právě do \emph{Auth}. Zapnutí různých možností autentizace je možné ve webové konzoli. V případě Googlu
+stačilo přidat kontaktní email a služba se spustila.
+
+Na frontendu jsem tedy vytvořil formulář pro přihlášení a registraci. Pro budoucí využití pří případném přechodu na jinou formu
+autentizace se tyto formuláře hodí. Ale v první verzi bude zpřístupněn pouze Google \emph{sign-in provider} a to sice přes \emph{pop-up},
+který se uživateli zobrazí při kliknutí na tlačítko přihlášení. Metoda která tuto funkčnost poskytuje se dá naimportovat přímo
+z \emph{Firebase}. Musel jsem ale upravit konfigurační soubor, ve které jsem změnil hodnotu \emph{authDomain} na \emph{recipeo.cz}.
+Díky tomu se \emph{pop-up} otevře na naší doméně a ne na původní vygenerované.
+
+\subsection{Firestore cache}
+% TODO: Navázat na sekci z designu
+
+\subsection{Firestore rules}
