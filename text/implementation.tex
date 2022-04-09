@@ -21,21 +21,18 @@ se otevřelo více možností. Je ale potřeba si kontrolovat, že aplikace nep�
 částka ze zadané platební karty.
 
 Po založení se do projektu přidá aplikace. Díky tomu \emph{Firebase} vygeneruje kód, který se musí do aplikace přidat.
+Pomocí \mintinline{console}|npm install firebase| se do projektu přidá potřebný balíček. Poté je potřeba přidat vygenerovaný
+kód. Dále jsem nainstaloval přes \mintinline{console}|npm install -g firebase-tools| \emph{Firebase CLI}. Toto rozhraní umožní
+ovládání všech služeb, které \emph{Firebase} nabízí přímo z konzole. Nakonec je nutné se přihlásit (\mintinline{console}|firebase login|) a % TODO: Popsat config?
+inicializovat projekt (\mintinline{console}|firebase init|). Při inicializaci je řada možností, vybrat si které služby jsou potřeba,
+a které nikoliv. Je také možné nastavit automatický \emph{deploy} při nahrání kódu na \emph{Github}.
 
+\subsection{Automatický deploy}
+Je velmi pohodlné, když se při změně kódu automaticky nahraje nová verze i na produkci. Proto jsem tuto funkci nastavil hned
+při zakládání projektu a po celou dobu vývoje, jsem měl do pár minut po nahrání dostupnou verzi pro testování odkudkoliv.
 
-\begin{listing}
-    \caption{Zbytečný kód}\label{list:8-6}
-    \begin{minted}{C}
-    #include<stdio.h>
-    #include<iostream>
-    // A comment
-    int main(void)
-    {
-        printf("Hello World\n");
-        return 0;
-    }
-    \end{minted}
-\end{listing}
+Při \mintinline{console}|firebase init| se vytvoří \emph{yml} soubory v složce \emph{.github}. Díky těmto souborům se pak při
+\emph{pull requestu} nebo \emph{merge} spustí proces, který sestaví aplikaci a výsledný \emph{build} nahraje na \emph{Firebase Hosting}.
 
 
 \section{Struktura projektu}
