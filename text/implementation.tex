@@ -54,6 +54,83 @@ z \emph{Firebase}. Musel jsem ale upravit konfigurační soubor, ve které jsem 
 Díky tomu se \emph{pop-up} otevře na naší doméně a ne na původní vygenerované.
 
 \subsection{Firestore cache}
+% TODO: Jak se fulltext. řešilo s Algolií
+K implementaci cache jsem přistoupil, když bylo jasné, že Algolia je nepoužitelná. Musel jsem tedy vymyslet jiný způsob fulltextového
+vyhledávání a jako nejlepší způsob se nabízelo stáhnou všechna potřebná data a filtr aplikovat přímo na zařízení uživatele. To je ale
+spojeno s nákladnými operacemi nad databází při každém spuštění aplikace, a proto bylo nutné implementovat cache.
+
+Základní spuštění je velmi jednoduché, stačí zavolat importovanou metodu z Firebase.
+
+\begin{listing}
+    \caption{Zapnutí perzistentního módu}
+    \begin{minted}{js}
+    enableIndexedDbPersistence(db, {forceOwnership: true} )
+    .catch((err) => {
+        if (err.code === "failed-precondition") {
+            console.log("Multiple tabs open, persistence can only be enabled
+            in one tab at a a time.")
+        } else if (err.code === "unimplemented") {
+            console.log("The current browser does not support all of the
+            features required to enable persistence")
+        }
+    })
+    \end{minted}
+\end{listing}
+
+Jako parametr je potřeba předat instanci Firestore, kterou lze získat s parametrem pro neomezenou velikost, tím pádem se nebudou
+mazat záznamy kvůli úspoře místa.
+
+\begin{listing}
+    \caption{Získání instance Firestore}
+    \begin{minted}{js}
+    const db = initializeFirestore(FirebaseApp, {
+        cacheSizeBytes: CACHE_SIZE_UNLIMITED
+    })
+    \end{minted}
+\end{listing}
 % TODO: Navázat na sekci z designu
 
+Poté jsem vytvořil funkci, která se starala o to, odkud se mají data stahovat. Při každém stažení jsem si v \emph{local storage} aktualizoval
+časovou značku a díky tomu jsem mohl stahovat pouze data, se kterými mezitím bylo manipulováno.
+
+\begin{listing}
+    \caption{Metoda pro stažení dat}
+    \begin{minted}{js}
+    async getData () {
+      if(!lastUpdated || !expirationDate) {
+        // Download everything from server and add timestamps to localStorage.
+        addTimestamps()
+        Store.dispatch("getData", { source: FirestoreSource.SERVER, updateOnly: false })
+        return
+      }
+
+      if(Date.now() > expirationDate) {
+        // Download everything from server and add timestamps to localStorage.
+        addTimestamps()
+        Store.dispatch("getData", { source: FirestoreSource.SERVER, updateOnly: false })
+      }
+      else {
+        // Get data from cache, call query to update new data and set last updated timestamp.
+        localStorage.lastUpdated = Date.now()
+        await Store.dispatch("getData", { source: FirestoreSource.CACHE, updateOnly: false })
+        await Store.dispatch("getData", { source: FirestoreSource.SERVER, updateOnly: true })
+      }
+    }
+    \end{minted}
+\end{listing}
+
+
 \subsection{Firestore rules}
+Bezpečnost je důležitá součást jakéhokoliv softwaru. Firebase proto nabízí takzvané Firestore Rules pro zabezpečení dat na serveru.
+Díky těmto pravidlům je možné filtrovat požadavky a v případě nutnosti zamítnout přístup k datům. Zvolil jsem pravidla na základě
+indentifikace pomocí \emph{uid} neboli uživatelského identifikátoru. Pravidla fungují tak, že se pomocí cesty ve Firestore vyhledá
+pravidlo a pokud je splněna podmínka, data se odešlou. Defaultně jsou všechny zdroje privátní, tedy nikdo v nim nemá přístup.
+
+\begin{listing}
+    \caption{Pravidlo pro přístup k veřejnému receptu}
+    \begin{minted}{js}
+    match /{path=**}/recipes/{doc} {
+        allow read: if resource.data.visibility == "public";
+    }
+    \end{minted}
+\end{listing}
