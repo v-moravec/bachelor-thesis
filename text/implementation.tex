@@ -61,7 +61,7 @@ spojeno s nákladnými operacemi nad databází při každém spuštění aplika
 
 Základní spuštění je velmi jednoduché, stačí zavolat importovanou metodu z Firebase.
 
-\begin{listing}
+\begin{listing}[h]
     \caption{Zapnutí perzistentního módu}
     \begin{minted}{js}
     enableIndexedDbPersistence(db, {forceOwnership: true} )
@@ -80,7 +80,7 @@ Základní spuštění je velmi jednoduché, stačí zavolat importovanou metodu
 Jako parametr je potřeba předat instanci Firestore, kterou lze získat s parametrem pro neomezenou velikost, tím pádem se nebudou
 mazat záznamy kvůli úspoře místa.
 
-\begin{listing}
+\begin{listing}[h]
     \caption{Získání instance Firestore}
     \begin{minted}{js}
     const db = initializeFirestore(FirebaseApp, {
@@ -93,7 +93,7 @@ mazat záznamy kvůli úspoře místa.
 Poté jsem vytvořil funkci, která se starala o to, odkud se mají data stahovat. Při každém stažení jsem si v \emph{local storage} aktualizoval
 časovou značku a díky tomu jsem mohl stahovat pouze data, se kterými mezitím bylo manipulováno.
 
-\begin{listing}
+\begin{listing}[h]
     \caption{Metoda pro stažení dat}
     \begin{minted}{js}
     async getData () {
@@ -126,7 +126,7 @@ Díky těmto pravidlům je možné filtrovat požadavky a v případě nutnosti 
 indentifikace pomocí \emph{uid} neboli uživatelského identifikátoru. Pravidla fungují tak, že se pomocí cesty ve Firestore vyhledá
 pravidlo a pokud je splněna podmínka, data se odešlou. Defaultně jsou všechny zdroje privátní, tedy nikdo v nim nemá přístup.
 
-\begin{listing}
+\begin{listing}[h]
     \caption{Pravidlo pro přístup k veřejnému receptu}
     \begin{minted}{js}
     match /{path=**}/recipes/{doc} {

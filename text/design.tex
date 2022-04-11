@@ -19,6 +19,11 @@ pro více typů obrazovek. Začal jsem vytvářením úvodní obrazovky, na kter
 aplikace, vyhledávání a logo. Tato stránka by měla být přehledná a čistá, proto jsem zvolil ikonky, které vystihují dané
 odkazy. Díky tomu se při zobrazení na mobilu se tak mohou skrýt pomocné texty.
 
+\begin{figure}[H]
+    \includegraphics[width=\textwidth]{images/main-page}
+    \caption{Hlavní obrazovka} \label{picture:recipeo:main-page}
+\end{figure}
+
 Dále jsem pokračoval se zobrazením receptů. Na verzi pro počítač jsem na levé straně umístil filtrování a zbylou plochu jsem ponechal
 pro samotné recepty. Na menších obrazovkách se filtrování přesune nad seznam receptů a již nebude viditelné při posunutí směrem dolů.
 Na \uv{karty} s recepty jsem vybral nejdůležitější informace. Tedy název, štítky a obrázek receptu. Nejprve jsem přidal do spodní části
@@ -43,6 +48,18 @@ na úvodní stránce a jedno menší, které by se dalo využít jako ikona apli
 Zvolil jsem několik fontů z Adobe Fonts a vytvořil návrhy. Menší logo jsem se rozhodl udělat jako první písmeno názvu na pozadí,
 které se použije v aplikaci. Návrhů bylo celkem šest a na Slacku, který jsme využívali pro komunikaci, jsme hlasovali, které je nejlepší.
 
+\begin{figure}[h]
+    \centering
+    \subfloat[První návrh loga]{\includegraphics[width=0.2\textwidth]{images/logo-1}\label{picture:recipeo:logo-1}}
+    \hfill
+    \subfloat[Druhý návrh loga]{\includegraphics[width=0.2\textwidth]{images/logo-2}\label{picture:recipeo:logo-2}}
+    \hfill
+    \subfloat[Třetí návrh loga]{\includegraphics[width=0.2\textwidth]{images/logo-3}\label{picture:recipeo:logo-3}}
+    \hfill
+    \subfloat[Výsledné logo]{\includegraphics[width=0.2\textwidth]{images/logo-final}\label{picture:recipeo:logo-final}}
+    \caption{Vývoj loga}
+\end{figure}
+
 \section{Ukázky}
 % TODO: Asi vložit přímo mezi text
 
@@ -51,10 +68,18 @@ Jak jsem již zmínil, \emph{Firestore} je databáze ve službě \emph{Firebase}
 dokumentovou databázi.
 
 \subsection{Doménový model}
-% TODO: Obrázek
+% TODO: Přidat upravený obrázek
+\begin{figure}[h]
+    \includegraphics[width=\textwidth]{images/domain-model}
+    \caption{Doménový model} \label{picture:recipeo:domain-model}
+\end{figure}
 
 \subsection{Schéma v dokumentové databázi}
-% TODO: Obrázek
+% TODO: Přidat upravený obrázek
+\begin{figure}[H]
+    \includegraphics[width=\textwidth]{images/firestore-structure}
+    \caption{Struktura dat ve Firestore} \label{picture:recipeo:firestore-structure}
+\end{figure}
 
 \section{Uložiště ve Firebase}
 Firebase poskytuje i vlastní uložiště dat pod názvem \emph{Cloud Storage}. Zde je potřeba ukládat externí obrázky, které uživatelé
