@@ -36,8 +36,19 @@ Při \mintinline{console}|firebase init| se vytvoří \emph{yml} soubory v slož
 
 
 \section{Struktura projektu}
+Vytvoření složek a základní rozdělení jsem ponechal na \emph{vue ui}. Konfigurační soubory se nachází v \emph{rootu} projektu, implementace
+je poté rozdělena podle zaměření ve složce \textbf{src}. Dále se při přidání \emph{Firebase Functions} objevila složka \textbf{functions}, která
+obsahuje kód, který se nahrává na server a dá se poté využít jako jednoduché API. Složka \textbf{public} obsahuje základní soubory, jako je \textbf{index.html},
+do kterého se při přístupu na stránku vloží JavaScriptový kód nebo různé ikony, jako je logo. Pro výsledný \emph{build}, který se nahraje na Firebase hosting se
+používá složka \textbf{dist}.
+% TODO: Vložení výpisu?
 
 \section{Tvoření komponent}
+% TODO: Router
+% TODO: i18n
+% TODO: Vuex
+% TODO: Popis stylu/témat
+% TODO: PWA
 
 \section{Firebase}
 
@@ -134,3 +145,5 @@ pravidlo a pokud je splněna podmínka, data se odešlou. Defaultně jsou všech
     }
     \end{minted}
 \end{listing}
+
+\subsection{Firestore Functions}
