@@ -3,12 +3,38 @@
 
 \chapter{Možnosti aplikace v budoucnosti}
 
+Během vývoje nastaly různé změny a některé funkce byly moc složité na implementaci nebo nebyly nutné v první verzi.
+V této kapitole nastíním, jakým směrem by se aplikace mohla vydat.
+
 \section{Interakce mezi uživateli}
-% TODO: Hodnocení a komentáře
+V prototypu je možné pouze vytvořit skupinu, pozvat do ní ostatní uživatele a přidat do ní recepty. Původně jsem zamýšlel
+i textovou komunikaci, ale nakonec jsme se s vedoucím shodli, že zatím není potřeba. Ovšem do budoucna by se mohla takováto
+funkce hodit, v kombinaci s komentáři a hodnocením receptů. Poté by uživatelé mohli vybírat mezi veřejnými recepty podle
+jejich kvality a sdílet své pocity či vychytávky.
+
+Na to by se dalo navázat vytvořením profilů uživatelů. Na tomto profilu by uživatelé mohli přidávat příspěvky jako je tomu
+například na Instagramu. Na této síti jsou populární krátká videa s recepty a tím pádem je zde potenciál pro případný % TODO: Citace
+příliv uživatelů.
 
 \section{Časovač}
+U návrhu zobrazení receptu na mobilním zařízení jsem přidal časovač. V receptu by mohla být tlačítka u daných kroků, která
+by spustila časovač na limit, který byl stanoven při vytvoření. Seznam těchto měření by byl dostupný jako plovoucí tlačítko
+v celé aplikaci a uživatel by tak k vaření potřeboval pouze mobilní zařízení.
 
 \section{Verze FIT}
+Kromě normálních receptů, by se dala aplikace přepnout do fitness módu, kde by zobrazovala pouze zdravé recepty. Nabídla by
+také sledování kalorií, plány pro zlepšení stravy či jiné návrhy na úpravu jídelníčku.
 
 \section{Pohodlí pro uživatele}
-% TODO: Keep awake
+Jak jsem zmínil ve výsledcích kvalitativního průzkumu, uživatelé mají často problémy se zašpiněním dipleje na jejich zařízení při vaření.
+Zabránit nepotřebného kontaktu se zařízením by mohlo pomoci například vynucení, aby obrazovka nezhasnula. Bylo by potřeba prozkoumat
+\emph{Screen Wake Lock API} nebo nějaký plugin třetí strany. % TODO: Citace https://developer.mozilla.org/en-US/docs/Web/API/Screen_Wake_Lock_API
+
+\section{Propojení se službami Košík a Rohlík}
+Tato práce měla být původně rozdělena na dvě, na frontend a na backend. Nakonec se nepodařilo sehnat studenta na backendovou část,
+a tak jsem musel zpracovat fullstack aplikaci. Nezbyl tedy čas na implementaci doporučování, jednoduché přidání do košíku a dalších
+funkcí napojené na služby Rohlíku a Košíku.
+
+V budoucnu je ale jistě priorita tyto funkce zpřístupnit. Doporučení receptů by šlo založit na aktuálních slevách, daném ročním období či
+uživatelově nákupní historii. S nákupy se pojí automatické přidání do spíže a sledování počtu surovin. Toto rozšíření spočívá v přidání
+privátních ingrediencí, ke kterým si uživatel nebo skupina může přiřadit vlastní odkazy na zmíněné služby a počet kusů.

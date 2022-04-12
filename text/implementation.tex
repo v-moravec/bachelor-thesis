@@ -43,12 +43,79 @@ do kterého se při přístupu na stránku vloží JavaScriptový kód nebo růz
 používá složka \textbf{dist}.
 % TODO: Vložení výpisu?
 
-\section{Tvoření komponent}
+\section{Router}
 % TODO: Router
-% TODO: i18n
-% TODO: Vuex
-% TODO: Popis stylu/témat
+Jako první věc jsem si připravil základní cesty aplikace. Cesty se přidávají jako pole objektů, kde objekt obsahuje políčka \emph{path, name, component \emph{a} meta}.
+Všechny tyto parametry nejsou povinné a u některých cest jsou i další, které popíšu později. \emph{Path} je string, který následuje za adresou stránky např.
+\emph{www.recipeo.cz\textbf{/example}}. \emph{Name} je název dané cesty, který se používá interně v kódu. Tato vlastnost se hodí, když programátor chce změnit adresu stránky.
+Díky využití názvu cesty ji nemusí všude v aplikaci přepisovat. \emph{Component} specifikuje komponentu, která se na adrese zobrazí a \emph{meta} jsem zde využit pro změnu
+titulku stránky.
+
+Pro některé stránky bylo nutné ověřit, zda je uživatel přihlášený. K tomu lze využít \emph{navigation guards}. Tato ochrana se spustí
+vždy před přístupem na stránku a vyhodnotí, zda je požadavek validní. Pokud není, uživatel je přesměrován na jinou stránku.
+
+\begin{listing}[h]
+    \caption{Příklad ochrany stránky proti nepřihlášeným uživatelům}
+    \begin{minted}{js}
+    async function authGuard(to, from, next) {
+      if (!await Auth.getCurrentUser()) next({ name: "Login" })
+      else {
+        next()
+      }
+    }
+    \end{minted}
+\end{listing}
+
+\section{Překlady}
+Ačkoliv jsme se nakonec s vedoucím rozhodli aplikaci ponechat pouze v čestině, již od začátku jsem ji psal dvojjazyčně a to sice
+česky a anglicky. Použil jsem plugin \emph{vue-i18n}. Pro překlady se využívají \emph{.js} soubory, ve kterých se pomocí objektů
+strukturují cesty, na které se poté odkazuje ve Vue komponentách.
+
+\begin{listing}[h]
+    \caption{Překlad pro recepty}
+    \begin{minted}{js}
+    recipes: {
+      recipes: "Recepty",
+      visibility: {
+        public: "Veřejný",
+        private: "Soukromý",
+        unlisted: "Neveřejný"
+      },
+      noRecipes: "Žádné recepty nenalezeny"
+    }
+    \end{minted}
+\end{listing}
+
+Překlad se vyvolá pomocí funkce \emph{\$t}, které se jako parametr předá cesta překladu.
+
+\begin{listing}[h]
+    \caption{Použití překladu}
+    \begin{minted}{js}
+    <span>{{ $t(recipes.noRecipes) }}</span>
+    \end{minted}
+\end{listing}
+
+\section{Vuex}
+Pomocí Vuex jsem spravoval data přímo v paměti. Vždy po spuštění aplikace se sem nahrála data receptů, ingrediencí, štítků
+nebo údaje o uživateli. Pomocí \emph{actions} se volal mnou vytvořený obal pro \emph{Firestore}, odkud se stáhla data buď ze serveru
+nebo s lokální cache. Poté se přes \emph{mutations} přidala nová data přímo do Vuexu. Zvolil jsem data, kterých bylo více jednoho typu,
+uchovávat v objektech místo obyčejných polí. Získal jsem tím konstantní časovou složitost při přístupu k prvku přes identifikátor. Také
+jsem díky tomu nemusel kontrolovat, zda recept s daným \emph{id} existuje, když se stahovala aktualizace. Recept se pouze přepsal novými
+daty.
+
+\section{PWA}
 % TODO: PWA
+
+\section{Stylování aplikace}
+Vzhled aplikace se při vývoji přizpůsobil knihovně Vuetify, ale celkový koncept zůstal zachován. Některé části aplikace
+se pročistily a staly se více přehledné. Začínal jsem pouze se světlým režimem, ale v průběhu jsem přidal i tmavý mód.
+Bylo potřeba zvolit tmavší pozadí, tak aby bylo podobné tomu původnímu. Vytvořil jsem tedy v aplikaci Illustrator nový projekt
+a pustil se do tvoření. Barvy jsem zvolil podle světlého pozadí, ale ztmavil jsem je.
+
+Pro různé režimy jsem odlišil barvy prvků na stránce. Ve světlém jsem se rozhodl pro výrazně modrou \emph{\#1d7dee} a k tomu
+pastelově zelenou \emph{\#79ffa1}, naopak v tmavém jsem použil tlumené odstíny těchto barev a to sice \emph{\#4372b4} a \emph{\#4ca262}.
+Pro změnu barev jsem využil Vuetify a jeho nastavení \emph{theme}. Komponenty z Vuetify mají většinou \emph{prop color}, díky
+kterému je možné změnit barvu. Pro prvky mimo Vuetify je možné využít CSS proměnné, která se automaticky vytvoří.
 
 \section{Firebase}
 
