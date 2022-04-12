@@ -43,6 +43,43 @@ do kterého se při přístupu na stránku vloží JavaScriptový kód nebo růz
 používá složka \textbf{dist}.
 % TODO: Vložení výpisu?
 
+\begin{listing}[h]
+    \caption{Struktura}
+    \begin{minted}{bash}
+    ├── README.md
+    ├── babel.config.js
+    ├── dist
+    │   └── index.html
+    ├── firebase.json
+    ├── firebaseConfig.js
+    ├── functions
+    ├── package.json
+    ├── public
+    │   ├── favicon.ico
+    │   ├── img
+    │   ├── index.html
+    │   └── robots.txt
+    ├── sa.json
+    ├── seed.sh
+    ├── src
+    │   ├── App.vue
+    │   ├── assets
+    │   ├── components
+    │   ├── enum
+    │   ├── lang
+    │   ├── main.js
+    │   ├── plugins
+    │   ├── registerServiceWorker.js
+    │   ├── router
+    │   ├── service
+    │   ├── store
+    │   ├── style
+    │   └── views
+    ├── vue.config.js
+    └── yarn.lock
+    \end{minted}
+\end{listing}
+
 \section{Router}
 % TODO: Router
 Jako první věc jsem si připravil základní cesty aplikace. Cesty se přidávají jako pole objektů, kde objekt obsahuje políčka \emph{path, name, component \emph{a} meta}.
@@ -104,7 +141,8 @@ jsem díky tomu nemusel kontrolovat, zda recept s daným \emph{id} existuje, kdy
 daty.
 
 \section{PWA}
-% TODO: PWA
+Co se týče \emph{PWA}, změnil jsem v konfiguračním souboru název a tématickou barvu. Poté jsem přidat komponentu pro aktualizaci aplikace.
+Uživateli se zobrazí, když je na server nahrána nová verze. Uživatel poté klikne na tlačítko \emph{Obnovit} a aplikace se spustí s novou verzí.
 
 \section{Stylování aplikace}
 Vzhled aplikace se při vývoji přizpůsobil knihovně Vuetify, ale celkový koncept zůstal zachován. Některé části aplikace
