@@ -3,21 +3,31 @@
 
 \chapter{Úvod}
 
-Vaření se týká spousty lidí. Většina k tomu používá recepty, které hledají na internetu. Bohužel recepty, které najdou
-a které se jim osvědčí, jsou často na jiných stránkách a správa těchto receptů se stává nereálná.
+Vaření se týká spousty lidí. Mladší generace k tomu používá recepty, které jsou dostupné na internetu. Recepty, které najdou
+a které se jim osvědčí, jsou často na jiných stránkách a správa těchto receptů se stává nereálná. Na druhou stranu na nejznámějších
+portálech není možné si recepty ukládat soukromně a tak spoustu starších lidí nevyužije možnosti digitalizace jejich receptů.
+Většina z nich si totiž uchovává své recepty napsané na listech papíru, což ale v dnešní době již není praktické řešení. Už jen kvůli
+sdílení receptu s někým, kdo si ho vyžádá, což je celkem běžná záležitost.
 
-Výsledek této práce bude moct použít široká veřejnost -- každý kdo vaří podle receptů. Aplikace jim pomůže s jednoduchým
-zadání receptů do sbírky, kde mohou mít všechny recepty na jednom místě, nákupem surovin, plánováním či správou toho všeho.
+Výsledek této práce bude moci použít široká veřejnost -- každý kdo vaří podle receptů. Aplikace jim pomůže s jednoduchým
+zadání receptů do sbírky, kde mohou mít všechny recepty na jednom místě. Dále budou moci uživatelé využít plánovače, kam
+lze zanést již přidané recepty či počet porcí. Pokud nejsou zvyklí plánovat a spíše řeší věci na poslední chvíli, bude
+pro ně připraven rychlý návrh receptu. V neposlední řadě bude jednoduché své recepty sdílet s ostatními uživateli.
+
+V práci popisuji proces vývoje webové aplikace od analýzy přes návrh až po implementaci. Zaměřím se hlavně na frontend v
+javascriptovém frameworku Vue.js, ale provedu čtenáře i backendovou částí, která je tvořena pomocí nástrojem Firebase od
+společnosti Google. Začnu sběrem informací od potencionálních uživatelů, pomocí kterých sestavím funkční a nefunkční požadavky.
+Poté zanalyzuji konkurenční řešení a popíšu jejich plusy či nevýhody. Poté představím technologie, které jsem si vybral pro
+vývoj. Dále navrhnu uživatelské rozhraní, grafické prvky či datovou strukturu aplikace. Na základě předchozích kapitol implementuji
+aplikaci a zmíním problémy, se kterými jsem se při vývoji setkal. Sestavím test pro uživatele a zhodnotím jeho výsledky.
+Na závěr zmíním funkce které jsem nestihl implementovat či rozšíření, která by se v budoucnosti hodila.
 
 Téma mě zaujalo, protože si myslím, že nabízí spoustu míst, pro učení se nových věcí. Také jsem nenašel žádnou alternativu,
 která by nabízela všechny funkce, které moje řešení poskytuje.
 
-V práci popisuji proces vývoje webové aplikace od analýzy přes návrh až po implementaci. Zaměřím se hlavně na frontend v
-javascriptovém frameworku Vue.js, ale provedu čtenáře i backendovou částí, která je tvořena pomocí nástrojem Firebase od
-společnosti Google.
-
 \chapter{Cíl}
-Cílem je vytvořit prototyp webové aplikace pro správu receptů, která zároveň usnadňí nákup surovin.
+Cílem této bakalářské práce je vytvořit prototyp webové aplikace pro správu receptů. Dále je nutné prozkoumat možnosti
+zjednodušení nákupu surovin či plánování vaření jídel.
 
 Nejdříve zanalyzuji potřeby potenciálních uživatelů, kde se pokusím zjistit, které všechny funkce by ocenili. Poté se
 zaměřím na existující řešení, která porovnám s mým řešením a popíšu vylepšení.

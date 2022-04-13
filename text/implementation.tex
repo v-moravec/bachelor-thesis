@@ -43,42 +43,33 @@ do kterého se při přístupu na stránku vloží JavaScriptový kód nebo růz
 používá složka \textbf{dist}.
 % TODO: Vložení výpisu?
 
-\begin{listing}[h]
-    \caption{Struktura}
-    \begin{minted}{bash}
-    ├── README.md
-    ├── babel.config.js
-    ├── dist
-    │   └── index.html
-    ├── firebase.json
-    ├── firebaseConfig.js
-    ├── functions
-    ├── package.json
-    ├── public
-    │   ├── favicon.ico
-    │   ├── img
-    │   ├── index.html
-    │   └── robots.txt
-    ├── sa.json
-    ├── seed.sh
-    ├── src
-    │   ├── App.vue
-    │   ├── assets
-    │   ├── components
-    │   ├── enum
-    │   ├── lang
-    │   ├── main.js
-    │   ├── plugins
-    │   ├── registerServiceWorker.js
-    │   ├── router
-    │   ├── service
-    │   ├── store
-    │   ├── style
-    │   └── views
-    ├── vue.config.js
-    └── yarn.lock
-    \end{minted}
-\end{listing}
+\begin{figure}
+    \dirtree{%
+        .1 \\.github\DTcomment{adresář s konfiguračními soubory Githubu}.
+        .1 dist\DTcomment{adresář pro sestavenou produkční verzi}.
+        .1 functions\DTcomment{adresář s implementaci Firebase Functions}.
+        .1 node\_modules\DTcomment{adresář s moduli staženými pomocí Yarn\/npm}.
+        .1 public\DTcomment{adresář s obrázky aplikace a základním souborem}.
+        .1 src\DTcomment{zdrojové kódy}.
+        .2 assets\DTcomment{obrázky využité v aplikaci}.
+        .2 components\DTcomment{Vue komponenty}.
+        .2 enum.
+        .2 lang\DTcomment{překlady}.
+        .2 plugins\DTcomment{obaly použitých knihoven}.
+        .2 router\DTcomment{adrešář pluginu Vue router}.
+        .2 service.
+        .2 store\DTcomment{adrešář pluginu Vuex}.
+        .2 style\DTcomment{CSS soubory}.
+        .2 service.
+        .2 store\DTcomment{adrešář pluginu Vuex}.
+        .2 style\DTcomment{CSS soubory}.
+        .2 views\DTcomment{Vue komponenty využívané ve Vue router pro zobrazení stránek}.
+        .1 firebase.json\DTcomment{konfigurační soubor Firebase}.
+        .1 firebaseConfig.js\DTcomment{tajný konfigurační soubor Firebase}.
+        .1 package.json\DTcomment{soubor obsahující seznam závistlostí a konfiguraci aplikace}.
+    }
+    \caption{Adresářová struktura} \label{fig:struktura}
+\end{figure}
 
 \section{Router}
 % TODO: Router
@@ -102,6 +93,21 @@ vždy před přístupem na stránku a vyhodnotí, zda je požadavek validní. Po
     }
     \end{minted}
 \end{listing}
+\begin{listing}[h]
+    \caption{Použití Auth Guardu na stránce profilu uživatele}
+    \begin{minted}{js}
+    {
+        path: "/account",
+        name: "Account",
+        component: Account,
+        meta: { title: "account" },
+        beforeEnter: authGuard
+    }
+    \end{minted}
+\end{listing}
+
+Také jsem využil globální úpravy \emph{routeru}, pro aktualizaci názvu stránky. Funguje na stejném principu jako výše zmíněná
+ochrana, ovšem provede se na všech stránkách.
 
 \section{Překlady}
 Ačkoliv jsme se nakonec s vedoucím rozhodli aplikaci ponechat pouze v čestině, již od začátku jsem ji psal dvojjazyčně a to sice
@@ -143,6 +149,15 @@ daty.
 \section{PWA}
 Co se týče \emph{PWA}, změnil jsem v konfiguračním souboru název a tématickou barvu. Poté jsem přidat komponentu pro aktualizaci aplikace.
 Uživateli se zobrazí, když je na server nahrána nová verze. Uživatel poté klikne na tlačítko \emph{Obnovit} a aplikace se spustí s novou verzí.
+Tento dialog se mi nejdříve nedařilo správně zobrazovat, protože jsem posílal špatný typ zprávy pro \emph{service workera}. Místo objektu s
+klíčem \emph{type} jsem posílal pouze string se zprávou.
+
+\begin{listing}[h]
+    \caption{Správná zpráva pro aktualizaci}
+    \begin{minted}{js}
+    this.registration.waiting.postMessage({ type: 'SKIP_WAITING' })
+    \end{minted}
+\end{listing}
 
 \section{Stylování aplikace}
 Vzhled aplikace se při vývoji přizpůsobil knihovně Vuetify, ale celkový koncept zůstal zachován. Některé části aplikace
@@ -154,6 +169,8 @@ Pro různé režimy jsem odlišil barvy prvků na stránce. Ve světlém jsem se
 pastelově zelenou \emph{\#79ffa1}, naopak v tmavém jsem použil tlumené odstíny těchto barev a to sice \emph{\#4372b4} a \emph{\#4ca262}.
 Pro změnu barev jsem využil Vuetify a jeho nastavení \emph{theme}. Komponenty z Vuetify mají většinou \emph{prop color}, díky
 kterému je možné změnit barvu. Pro prvky mimo Vuetify je možné využít CSS proměnné, která se automaticky vytvoří.
+
+% TODO: Přidal barevnou paletu pro zobrazení barev
 
 \section{Firebase}
 
@@ -171,6 +188,7 @@ Díky tomu se \emph{pop-up} otevře na naší doméně a ne na původní vygener
 
 \subsection{Firestore cache}
 % TODO: Jak se fulltext. řešilo s Algolií
+\subsubsection{Algolia}
 K implementaci cache jsem přistoupil, když bylo jasné, že Algolia je nepoužitelná. Musel jsem tedy vymyslet jiný způsob fulltextového
 vyhledávání a jako nejlepší způsob se nabízelo stáhnou všechna potřebná data a filtr aplikovat přímo na zařízení uživatele. To je ale
 spojeno s nákladnými operacemi nad databází při každém spuštění aplikace, a proto bylo nutné implementovat cache.
@@ -207,9 +225,11 @@ mazat záznamy kvůli úspoře místa.
 % TODO: Navázat na sekci z designu
 
 Poté jsem vytvořil funkci, která se starala o to, odkud se mají data stahovat. Při každém stažení jsem si v \emph{local storage} aktualizoval
-časovou značku a díky tomu jsem mohl stahovat pouze data, se kterými mezitím bylo manipulováno.
+časovou značku a díky tomu jsem mohl stahovat pouze data, se kterými mezitím bylo manipulováno. Zde se objevilo několik problémů. Jeden z nich
+bylo to, že jakmile se přihlásil jeden uživatel, poté se ihned odhlásil a přihlásil se jiný, recepty se nestáhnuly správně. Bylo proto potřeba
+aktualizovat časovou značku při každé manipulaci s autorizací.
 
-\begin{listing}[h]
+\begin{listing}[H]
     \caption{Metoda pro stažení dat}
     \begin{minted}{js}
     async getData () {
@@ -242,7 +262,7 @@ Díky těmto pravidlům je možné filtrovat požadavky a v případě nutnosti 
 indentifikace pomocí \emph{uid} neboli uživatelského identifikátoru. Pravidla fungují tak, že se pomocí cesty ve Firestore vyhledá
 pravidlo a pokud je splněna podmínka, data se odešlou. Defaultně jsou všechny zdroje privátní, tedy nikdo v nim nemá přístup.
 
-\begin{listing}[h]
+\begin{listing}[H]
     \caption{Pravidlo pro přístup k veřejnému receptu}
     \begin{minted}{js}
     match /{path=**}/recipes/{doc} {
@@ -252,3 +272,22 @@ pravidlo a pokud je splněna podmínka, data se odešlou. Defaultně jsou všech
 \end{listing}
 
 \subsection{Firestore Functions}
+Cloudové funkce jsem využil pro místa v aplikaci, kde nebylo možné pomocí Firestore Rules správně ošetřit bezpečnost dat.
+Poprvé jsem napsal funkce, díky kterým se stáhnul určitý počet receptů, ke kterým měl uživatel přístup. Využil jsem stránkování,
+což znamená, že když uživatel přišel na stránku s recepty, stáhlo se pouze omezené množství a až když bylo potřeba, aplikace požádala
+server o další. Díky tomu jsem nemusel vytvářet žádná pravidla, stačilo nechat celou databázi zamknutou, protože ve Functions se přistupuje
+k datům přes admin účet, který má práva na veškeré operace. Nakonec toho ale nebyl vhodný přístup, a tak jsem funkce odstranil.
+
+Kde se tento přístup hodil bylo u pozvánek do skupiny. Pozvanému uživateli se musí zobrazit informace o skupině, ten ale ještě ve skupině není,
+a tak nemá k těmto datům přístup. Proto se zavolá z aplikace funkce \emph{getGroup}, která odešle zpátky záznam dané skupiny. Poté se uživateli
+zobrazí dialog s pozvánkou a tlačítko \emph{Připojit}. Po stisku tohoto tlačítka se opět zavolá jedna z funkcí, tentokrát \emph{joinGroup}. Ta
+zapíše identifikátor uživatele do pole \emph{userIds}, které je v dokumentu dané skupiny. K tomu se dá využít funkce \emph{arrayUnion}, kterou poskytuje
+Firebase k jednoduchým operacím na poli. Díky tomu se nemůže stát, že by nastala duplikace jednoho uživatele.
+
+Firebase nabízí různé typy emulátorů, ovšem jediný který jsem využil byl právě \emph{Functions emulator}. Díky tomu jsem mohl lokálně testovat, jak vypadají
+data, která odesílá server a nemusel pokaždé čekat, než se funkce nahrají na server, což při větším počtu trvá až několik minut. Také jsem tento lokální server
+využil při problémech s právy. Několikrát se mi stalo, že funkce spadla či mi odepřela přístup. Pomocí emulátoru jsem tak zjistil, zda je špatně napsaná funkce
+nebo není správně nakonfigurovaná. Poté jsem našel v dokumentaci našel, že je potřeba u některých funkcí přidat roli pro autorizování volání funkce v Google
+Cloud platfomě. % TODO: Citace https://cloud.google.com/functions/docs/securing/managing-access-iam
+
+% TODO: Problémy s přístupem k funkci https://console.cloud.google.com/functions/details/europe-west3/joinGroup?project=recipeo-2e1c9&authuser=0&hl=en&tab=permissions

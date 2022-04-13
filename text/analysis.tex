@@ -44,36 +44,69 @@ Aplikaci nebude využívat mnoho uživatelů, ale je nutné myslet na budoucí r
 Prozatím se pro backendovou část využije \emph{serverless} řešení. Pokud by tato alternativa v budoucnu neposkytovala dostatečné
 funkce nebo se nevyplatila finančně, je možné přejít na jiný backend.
 
+\begin{figure}[h]
+    \includegraphics[width=\textwidth]{images/pozadavky}
+    \caption{Model požadavků} \label{picture:recipeo:pozadavky}
+\end{figure}
+
 \section{Existující řešení}
 
-%TODO: Citace
+Porovnal jsem nejpoužívanější české portály s recepty. Některé z nich nabízejí další obsah jako například blog či magazín.
+
 \subsection{Vareni.cz}
 
-Na vareni.cz se nachází několik reklam, jsou velké a rušivé. Není zde možné si přidat soukromý recept a sdílet ho
+Na vareni.cz~\cite{VareniCZ} se nachází několik reklam, které jsou velké a rušivé. Není zde možné si přidat soukromý recept a sdílet ho
 pouze s vybranými uživateli. Celkový koncept přidání receptu je pouze veřejný, není tedy možné si zde vytvořit sbírku
-oblíbených receptů z různých portálů.
+oblíbených receptů z různých portálů. Vyhledávání je možné podle názvu, ingrediencí či různých parametrů jako je druh jídla
+nebo národní kuchyně. Recepty mají hodnocení od jedné do pěti hvězdiček.
 
-%TODO: Citace
-\subsection{toprecepty.cz}
+Na stránce konkrétního receptu je shrnutí nejdůležitějších vlastností, tedy název, krátký popis, hodnocení a čas vaření.
+Také v hlavičce kolují různé komentáře. Výhodou jsou návrhy podobných receptů. Naopak velmi špatné je rozložení seznamu ingrediencí
+a postupu přípravy. Tato část je velmi nepřehledná a je nerozeznatelné kde recept končí a začínají jiné recepty.
 
-Na tomto portálu byla bohužel nefunkční registrace, takže jsem nemohl nahlédnout na funkce poskytované přihlášeným
+Jsou zde kuchařky, ale než že by byly tématické nebo měli společného autora, přišlo mi, že se jedná se o náhodnou kolekci receptů,
+kde je jich často více než tisíc.
+
+Celkem hezký nápad jsou fotorecepty. Uživatele provedou celým vařením pomocí kroků, přičemž u každého je fotodokumentace jak daný krok
+provést.
+
+\begin{figure}[h]
+    \includegraphics[width=\textwidth]{images/varenicz-uvodni-stranka}
+    \caption{Hlavní stránka vareni.cz} \label{picture:varenicz:uvodni-stranka}
+\end{figure}
+
+\subsection{Toprecepty.cz}
+
+Na tomto portálu~\cite{TopreceptyCZ} byla bohužel nefunkční registrace, takže jsem nemohl nahlédnout na funkce poskytované přihlášeným
 uživatelům. Opět zde byla přítomna velká reklama, která zabírala většinu stránky. Jinak byl web navrhnut přehledně,
 ale narazil jsem na několik nefunkčních prvků na mobilním zobrazení. Zhodnotit přidání receptů a jak funguje jejich
 sdílení zhodnotit nemohu, kvůli výše zmíněným problémům. Našel jsem funkci podobnou doporučování receptů, avšak se
 pravděpodobně jedná o náhodné doporučení, které nemá nic společného s tím co má uživatel rád. Dále je na webu dostupný
 online magazín, kde jsou různé články týkající se gastronomie.
 
-%TODO: Citace
-\subsection{recepty.cz}
+\begin{figure}[h]
+    \includegraphics[width=\textwidth]{images/topreceptycz-uvodni-stranka}
+    \caption{Hlavní stránka toprecepty.cz} \label{picture:topreceptycz:uvodni-stranka}
+\end{figure}
 
-I třetí zástupce existujících řešení používá reklamu přes celou stránku okolo jejího obsahu. Podobně jako toprecepty.cz
+\subsection{Recepty.cz}
+
+I třetí zástupce~\cite{ReceptyCZ} existujících řešení používá reklamu přes celou stránku okolo jejího obsahu. Podobně jako toprecepty.cz
 je zde magazín obsahující příspěvky na spoustu témat o vaření. U přidání receptu nebylo napsané, co se s receptem stane,
 zda bude veřejný nebo se zobrazí pouze mě. Po kliknutí na tlačítko \uv{Uložit recept}, se zobrazila stránka s nadpisem
 \uv{Recept čeká na schválení}. Nebylo tedy opět možné soukromé použití.
 
+Zobrazení receptu je podobné tomu na vareni.cz, ale přijde mi více přehledné. U kroků se zobrazují rady, které ale
+nemají s daným krokem nic společného, spíše odkazují na náhodné články či recepty.
+
+\begin{figure}[h]
+    \includegraphics[width=\textwidth]{images/receptycz-uvodni-stranka}
+    \caption{Hlavní stránka recepty.cz} \label{picture:receptycz:uvodni-stranka}
+\end{figure}
+
 \subsection{Závěr}
 
-Existující řešení na vyhledávání receptů nabízí pouze veřejné recepty a mají spoustu reklam. Moje řešení bude poskytovat
+Existující řešení na vyhledávání receptů nabízejí pouze veřejné recepty a mají spoustu reklam. Moje řešení bude poskytovat
 možnost soukromé sbírky receptů a jejich sdílení s vybranými uživateli či pomocí odkazu.
 
 \section{Nákup surovin}
