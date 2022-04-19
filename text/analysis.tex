@@ -15,34 +15,48 @@ Všechny rozhovory byly vedeny v rozmezí dvou týdnů a poté jsem z nich sesta
 
 \section{Funkční požadavky}
 
-\subsection{F1: Správa receptů}
-Pro uživatele je důležité udržovat své recepty aktuální. Je tedy nutné implementovat rozhraní, které umožní pracovat s
-přidanými recepty.
-\subsection{F2: Sdílení receptů}
-Narozdíl od ostatních služeb, které jsou popsány dále v textu, by tato měla poskytovat sdílení mezi uživateli. Na to se pojí i
-viditelnost receptů, tedy všechny nebudou veřejné, ale bude možné je přidat jako soukromé či neveřejné.
-\subsection{F3: Objednávky přes služby typu rohlik.cz}
-Převážně mladší generace dnes hojně využívá služeb na rozvoz nákupu. Je tedy potřeba přidat zjednodušený přesun potřebných
-surovin do nákupních košíků v těchto službách, a tak zefektivnit čas nákupu.
-\subsection{F4: Plánovač}
-Pro mnoho lidí je důležité naplánovat si kdy mají čas si jídlo uvařit a naopak kdy by ho potřebovali mít již hotové. Pro bude v
-aplikaci plánovač, kde bude uživatel moci sledovat, kdy ho čeká co uvařit.
-\subsection{F5: Správa spíže}
-Tento požadavek souvisí s těmi předchozími, tedy hlavně ulehčí uživateli nákup surovin a plánování vaření. Pokud uživatel nebude chtít
-kontrolovat jaké suroviny má doma, funkci nebude muset využít.
-\subsection{F6: Možnost ankety kolem jídelníčku}
-Spíše než v běžném životě by se anketa dala využít například při výletu s kamarády či soustředění s týmem nebo kapelou. Uživatelé
-by měli možnost hlasovat, v jaký den a jaké jídlo by chtěli.
+
+\begin{itemize}
+    \item F1: Správa receptů
+
+    Pro uživatele je důležité udržovat své recepty aktuální. Je tedy nutné implementovat rozhraní, které umožní pracovat s
+    přidanými recepty.
+    \item F2: Sdílení receptů
+
+    Narozdíl od ostatních služeb, které jsou popsány dále v textu, by tato měla poskytovat sdílení mezi uživateli. Na to se pojí i
+    viditelnost receptů, tedy všechny nebudou veřejné, ale bude možné je přidat jako soukromé či neveřejné.
+    \item F3: Objednávky přes služby typu rohlik.cz
+
+    Převážně mladší generace dnes hojně využívá služeb na rozvoz nákupu. Je tedy potřeba přidat zjednodušený přesun potřebných
+    surovin do nákupních košíků v těchto službách, a tak zefektivnit čas nákupu.
+    \item F4: Plánovač
+
+    Pro mnoho lidí je důležité naplánovat si kdy mají čas si jídlo uvařit a naopak kdy by ho potřebovali mít již hotové. Pro bude v
+    aplikaci plánovač, kde bude uživatel moci sledovat, kdy ho čeká co uvařit.
+    \item F5: Správa spíže
+
+    Tento požadavek souvisí s těmi předchozími, tedy hlavně ulehčí uživateli nákup surovin a plánování vaření. Pokud uživatel nebude chtít
+    kontrolovat jaké suroviny má doma, funkci nebude muset využít.
+    \item F6: Možnost ankety kolem jídelníčku
+
+    Spíše než v běžném životě by se anketa dala využít například při výletu s kamarády či soustředění s týmem nebo kapelou. Uživatelé
+    by měli možnost hlasovat, v jaký den a jaké jídlo by chtěli.
+\end{itemize}
 
 \section{Nefunkční požadavky}
 
-\subsection{U1: Dostupné jako webová aplikace}
-Vzhledem k potřebě mít aplikaci dostupnou jak pro mobily, tak pro počítač, je webová aplikace nejflexibilnější řešení.
-\subsection{P1: Systém pro jednotky uživatelů}
-Aplikaci nebude využívat mnoho uživatelů, ale je nutné myslet na budoucí rozšíření.
-\subsection{S1: Serverless s možností připojení na speciální API v budoucnu}
-Prozatím se pro backendovou část využije \emph{serverless} řešení. Pokud by tato alternativa v budoucnu neposkytovala dostatečné
-funkce nebo se nevyplatila finančně, je možné přejít na jiný backend.
+\begin{itemize}
+    \item U1: Dostupné jako webová aplikace
+
+    Vzhledem k potřebě mít aplikaci dostupnou jak pro mobily, tak pro počítač, je webová aplikace nejflexibilnější řešení.
+    \item P1: Systém pro jednotky uživatelů
+
+    Aplikaci nebude využívat mnoho uživatelů, ale je nutné myslet na budoucí rozšíření.
+    \item S1: Serverless s možností připojení na speciální API v budoucnu
+
+    Prozatím se pro backendovou část využije \emph{serverless} řešení. Pokud by tato alternativa v budoucnu neposkytovala dostatečné
+    funkce nebo se nevyplatila finančně, je možné přejít na jiný backend.
+\end{itemize}
 
 \begin{figure}[h]
     \includegraphics[width=\textwidth]{images/pozadavky}
