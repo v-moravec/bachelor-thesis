@@ -11,14 +11,15 @@ Před touto prací jsem neměl žádné zkušenosti se zakládáním větších 
 jsme založili projekt pro \emph{Vue} aplikaci. Měli jsme již připravený \emph{Github} repozitář, ve kterém jsme projekt
 verzovali.
 
-Pro založení jsme využili \emph{vue ui}, což je grafické rozhraní pro správu \emph{Vue} projektů. Zde jsme zvolili konfiguraci
-a přidali pluginy. Poté bylo potřeba některé z nich inicializovat.
+Pro založení jsme využili \emph{vue ui} (grafická nadstavba \emph{vue cli}), což je grafické rozhraní pro správu \emph{Vue} projektů.
+Zde jsme zvolili konfiguraci a přidali pluginy. Poté bylo potřeba některé z nich inicializovat.
 
 \subsection{Firebase}
 Nejdříve jsme založili projekt ve \emph{Firebase}. Stačí se přihlásit, otevřít konzoli a kliknout na tlačítko pro vytvoření projektu.
 Poté se zadá název, popřípadě se projde konfigurací \emph{Google Analytics}. Rovnou jsme přešli na \emph{Blaze plan}, díky kterému
 se otevřelo více možností. Je ale potřeba si kontrolovat, že aplikace nepřesáhne žádné limity~\cite{FirebaseLimits}, jinak se strhne
-částka ze zadané platební karty.
+částka ze zadané platební karty. To se dá dělat buď manuálně nebo stanovit \emph{budget}, který aplikace nesmí za měsíc přesáhnout.
+Po vyčerpání poloviny tohoto limitu přijde upozornění na email správce aplikace.
 
 Po založení se do projektu přidá aplikace. Díky tomu \emph{Firebase} vygeneruje kód, který se musí do aplikace přidat.
 Pomocí \mintinline{console}|npm install firebase| se do projektu přidá potřebný balíček. Poté je potřeba přidat vygenerovaný
@@ -57,9 +58,6 @@ používá složka \textbf{dist}.
         .2 lang\DTcomment{překlady}.
         .2 plugins\DTcomment{obaly použitých knihoven}.
         .2 router\DTcomment{adrešář pluginu Vue router}.
-        .2 service.
-        .2 store\DTcomment{adrešář pluginu Vuex}.
-        .2 style\DTcomment{CSS soubory}.
         .2 service.
         .2 store\DTcomment{adrešář pluginu Vuex}.
         .2 style\DTcomment{CSS soubory}.
@@ -129,11 +127,13 @@ strukturují cesty, na které se poté odkazuje ve Vue komponentách.
     \end{minted}
 \end{listing}
 
-Překlad se vyvolá pomocí funkce \emph{\$t}, které se jako parametr předá cesta překladu.
+Překlad se vyvolá v \emph{template} pomocí funkce \emph{\$t}, které se jako parametr předá cesta překladu. V \emph{script}
+tagu se můžeme na funkci odkazovat přes \emph{this.\$t} a v externích js souborech například přes \emph{i18n.t(recipes)}, kde
+\emph{i18n} je naimportovaný ze souboru \emph{router/index.js}.
 
-\begin{listing}[h]
+\begin{listing}[H]
     \caption{Použití překladu}
-    \begin{minted}{js}
+    \begin{minted}{html}
     <span>{{ $t(recipes.noRecipes) }}</span>
     \end{minted}
 \end{listing}
@@ -165,14 +165,16 @@ se pročistily a staly se více přehledné. Začínal jsem pouze se světlým r
 Bylo potřeba zvolit tmavší pozadí, tak aby bylo podobné tomu původnímu. Vytvořil jsem tedy v aplikaci Illustrator nový projekt
 a pustil se do tvoření. Barvy jsem zvolil podle světlého pozadí, ale ztmavil jsem je.
 
-Pro různé režimy jsem odlišil barvy prvků na stránce. Ve světlém jsem se rozhodl pro výrazně modrou \emph{\#1d7dee} a k tomu
-pastelově zelenou \emph{\#79ffa1}, naopak v tmavém jsem použil tlumené odstíny těchto barev a to sice \emph{\#4372b4} a \emph{\#4ca262}.
+Pro různé režimy jsem odlišil barvy prvků na stránce. Ve světlém jsem se rozhodl pro výrazně modrou \emph{\#1d7dee} \fcolorbox{black}{recipeo-light-blue}{\rule{0pt}{6pt}\rule{6pt}{0pt}} a k tomu
+pastelově zelenou \emph{\#79ffa1} \fcolorbox{black}{recipeo-light-green}{\rule{0pt}{6pt}\rule{6pt}{0pt}} , naopak v tmavém jsem použil tlumené odstíny těchto barev a to sice \emph{\#4372b4} \fcolorbox{black}{recipeo-dark-blue}{\rule{0pt}{6pt}\rule{6pt}{0pt}}  a \emph{\#4ca262} \fcolorbox{black}{recipeo-dark-green}{\rule{0pt}{6pt}\rule{6pt}{0pt}} .
 Pro změnu barev jsem využil Vuetify a jeho nastavení \emph{theme}. Komponenty z Vuetify mají většinou \emph{prop color}, díky
 kterému je možné změnit barvu. Pro prvky mimo Vuetify je možné využít CSS proměnné, která se automaticky vytvoří.
 
 % TODO: Přidal barevnou paletu pro zobrazení barev
 
 \section{Firebase}
+
+Knihovnu Firebase jsem již představil v předchozích kapitolách. V této sekci popíšu jak knihovnu používat.
 
 \subsection{Firebase Auth}
 \emph{Firebase} dokáže řešit i přihlášení uživatele. Nejprve jsem chtěl mít dva způsoby přihlášení, přes email a heslo a přes
@@ -189,6 +191,25 @@ Díky tomu se \emph{pop-up} otevře na naší doméně a ne na původní vygener
 \subsection{Firestore cache}
 % TODO: Jak se fulltext. řešilo s Algolií
 \subsubsection{Algolia}
+Jak jsem již popisoval, nejdříve jsem zvolil řešení s technologií Algolia. Bylo tedy potřeba založit nový projekt. Po jeho založení
+jsem vytvořil index \emph{recipes}, do kterého se synchronizovala data z Firebase. To se dělo díky rozšíření, které vytvořilo přímo % TODO: % https://firebase.google.com/products/extensions/algolia-firestore-algolia-search
+zastoupení Algolie. Měl jsem nejdříve s tímto rozšířením problémy, ale později jsem zjistil, že se mi data nesynchronizují, protože jsem
+poskytl do naší aplikace ve Firebase špatný API klíč. Ten měl práva pouze na čtení, ovšem už ne na zápis. Synchronizace se tedy vždy odeslala,
+ale Algolia ji odmítnula a ponechala v indexu stará data.
+
+Po prvních pár dnech jsme zjistili, že počet čtení je celkem vysoký, hlavně kvůli tomu, že se vyhledávání na serveru spustí po
+každém napsaném písmenku. Využil jsem tedy \emph{debounce} funkci, která tato vyhledávání snížila. \emph{Debounce} funguje tak,
+že se spustí vždy, když uživatel stiskne klávesu na klávesnici. Poté je nastavený časový limit a pokud do té doby nic nenapíše,
+spustí se \emph{callback}, tedy v našem případě funkce která zařídí vyhledávání.
+
+Dále jsem díky~\cite{AlgoliaBlog} zjistil, že je % TODO: Cite https://pipo.blog/articles/20210830-algolia-vue-instantsearch
+možné limitovat volání při načtení komponenty. V základu se totiž při každém načtení vyčerpají dvě zavolání kvůli optimalizaci rychlosti
+vyhledávání.
+
+I přes všechny tyto vylepšení bylo nemožné udržet počet vyhledávání pod limitem 10 000 za měsíc, protože já samotný při vývoji,
+kdy jsem až tolik vyhledávání nevyužíval, vyčerpal přes deset procent z limitu.
+
+\subsubsection{Cache}
 K implementaci cache jsem přistoupil, když bylo jasné, že Algolia je nepoužitelná. Musel jsem tedy vymyslet jiný způsob fulltextového
 vyhledávání a jako nejlepší způsob se nabízelo stáhnou všechna potřebná data a filtr aplikovat přímo na zařízení uživatele. To je ale
 spojeno s nákladnými operacemi nad databází při každém spuštění aplikace, a proto bylo nutné implementovat cache.
@@ -260,7 +281,7 @@ aktualizovat časovou značku při každé manipulaci s autorizací.
 Bezpečnost je důležitá součást jakéhokoliv softwaru. Firebase proto nabízí takzvané Firestore Rules pro zabezpečení dat na serveru.
 Díky těmto pravidlům je možné filtrovat požadavky a v případě nutnosti zamítnout přístup k datům. Zvolil jsem pravidla na základě
 indentifikace pomocí \emph{uid} neboli uživatelského identifikátoru. Pravidla fungují tak, že se pomocí cesty ve Firestore vyhledá
-pravidlo a pokud je splněna podmínka, data se odešlou. Defaultně jsou všechny zdroje privátní, tedy nikdo v nim nemá přístup.
+pravidlo a pokud je splněna podmínka, data se odešlou. Ve výchozím stavu jsou všechny zdroje privátní, tedy nikdo v nim nemá přístup.
 
 \begin{listing}[H]
     \caption{Pravidlo pro přístup k veřejnému receptu}
@@ -270,6 +291,23 @@ pravidlo a pokud je splněna podmínka, data se odešlou. Defaultně jsou všech
     }
     \end{minted}
 \end{listing}
+
+Při zobrazení editace pravidel se v levé části pod historií pravidel nachází \emph{Rules playground}. V této záložce je možné
+testovat vytvořená pravidla. Vývojář může zvolit typ dotazu, tedy \emph{get, create, update \emph{nebo} delete}, dále specifikovat
+zdroj, ze kterého chceme data dostat (nějaká kolekce) a nakonec určit, zda se požadavek bude simulován pod přihlášeným uživatelem
+či nikoliv. U uživatele lze nastavit \emph{provider}, \emph{uid}, email (i zda byl verifikován), jméno a telefon. Nakonec se pomocí tlačítka
+\emph{run} dotaz spustí a v pravé části u pravidel se graficky zobrazí, kde byl přístup povolen a kde odmítnut.
+
+
+\begin{figure}[H]
+    \includegraphics[width=\textwidth]{images/recipeo-rules-denied}
+    \caption{Zablokování přístupu v Rules playground} \label{picture:recipeo:rules-denied}
+\end{figure}
+
+\begin{figure}[H]
+    \includegraphics[width=\textwidth]{images/recipeo-rules-allowed}
+    \caption{Povolení přístupu v Rules playground} \label{picture:recipeo:rules-allowed}
+\end{figure}
 
 \subsection{Firestore Functions}
 Cloudové funkce jsem využil pro místa v aplikaci, kde nebylo možné pomocí Firestore Rules správně ošetřit bezpečnost dat.

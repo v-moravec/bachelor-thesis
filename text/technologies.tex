@@ -15,10 +15,6 @@ korporace, ale je vyvíjen komunitou.\cite{VueJS} Zvolili jsme verzi 3, protože
 celou aplikaci z verze 2. V pozdější fázi vývoje se ale ukázalo, že pro verzi 3 nebyla plně dokončena hlavní knihovna, kterou jsem chtěl využít.
 Musel jsem tak ponížit verze všech závislostí a přejít tak na verzi 2.
 
-\section{SPA}
-SPA neboli \emph{single page application} je stránka, která využívá takové architektury, kde použitá technologie nejen kontroluje
-vzhled stránky, ale i data a manipulaci s nimi a navigaci tím způsobem, že není nutné provádět obnovení stránky.\cite{VueSPA}
-
 \section{Vuetify}
 Vuetify je knihovna implementující různé komponenty, které je možné použít při tvorbě uživatelského rozhraní. Kromě toho
 usnadňuje práci s rozložením na stránce, přizpůsobením barevného téma, ikonami atd. Další výhodou jsou týdenní aktualizace
@@ -34,9 +30,6 @@ předávání skrz komponenty by bylo jinak složité.
 I18n je rozšíření pro překlady, díky kterému je možné texty v aplikaci napsat v několika jazycích. Nejprve jsem tvořil aplikaci dvojjazyčně
 v angličtině a čestině, ale nakonec jsem se rozhodl, že prozatím dává aplikace smysl pouze v češtině. Nicméně překlady jsem ponechal a v budoucnu
 je možné je využít.
-
-\section{Vue Router}
-V aplikaci je potřeba mít navigaci. Ve Vue se používá Vue Router, který umožní pohyb po různých stránkách.
 
 \section{Firebase}
 Firebase jsem použil na backendu. To mi umožnilo mít vše na jednom místě. Uložiště, databázi, autorizaci uživatelů, hosting atd.
@@ -73,4 +66,63 @@ Vybrali jsme Algolii, kvůli dobré podpoře Vue a Firebase, nejmenší složito
 Při vývoji jsem ale zjistil, že základní režim (tedy 10 000 čtení za měsíc) nejspíše stačit nebude. Nakonec jsem proto přešel na
 frontendové vyhledávání. Všechna data jsem stáhnul při načtení aplikace a poté s nimi dál pracoval.
 
+\section{Vue Router}
+V aplikaci je potřeba mít navigaci. Ve Vue se používá Vue Router, který umožní pohyb po různých stránkách.
+
+\subsection{SPA}
+SPA neboli \emph{single page application} je stránka, která využívá takové architektury, kde použitá technologie nejen kontroluje
+vzhled stránky, ale i data a manipulaci s nimi a navigaci tím způsobem, že není nutné provádět obnovení stránky.\cite{VueSPA}
+
+Pro demonstraci rozdílu mezi MPA a SPA jsem zvolil následující diagramy.
+
+\begin{figure}[H]
+    \includegraphics[width=\textwidth]{pdf/MPA-model}
+    \caption{MPA Model} \label{picture:recipeo:mpa-model}
+\end{figure}
+\begin{figure}[H]
+    \includegraphics[width=\textwidth]{pdf/SPA-model}
+    \caption{SPA Model} \label{picture:recipeo:spa-model}
+\end{figure}
+
+Jak je ve SPA diagramu vidět, některá data lze získat přímým přístupem do Firestore, ale jiná je nutné stáhnout z Functions.
+Je to dané tím, že u některých dat není možné ošetřit jejich bezpečnost pomocí Firestore Rules a je tedy nutné k nim přistupovat
+přes Functions, které má dostupné Admin SDK, tedy neomezený přístup k celé databázi. Data tak mohou být pro běžné uživatele nepřístupná,
+ale pomocí volání cloudové funkce přímo z aplikace je možné je stáhnout. Také se dají data tímto způsobem předzpracovat, což může
+být výhodné právě z hlediska bezpečnosti a k uživateli se tak nedostane nic co by nemělo.
+
 \section{PWA}
+
+Progresivní webová aplikace se snaží usnadnit vývoj standardních webových aplikací jako nativní aplikace pro mobilní telefony.
+K tomu využívá \emph{service workers} a webové aplikační \emph{manifesty}. Aby se aplikace dala považovat za PWA, měla by
+mít tyto vlastnosti. % TODO: Cite
+
+
+\begin{itemize}
+    \item Progresivní
+
+    Dostupné pro všechny uživatele nehledě na typ prohlížeče
+    \item Responzivní
+
+    Stránka je optimalizována pro všechny typy obrazovek (od nejmenších telefonů, přes notebooky až po velké PC monitory)
+    \item Nezávislá na konektivitě
+
+    Pomocí technologie \emph{service workers} je možné aplikaci využívat offline díky cachování
+    \item App-like
+
+    Aplikace vypadá jako nativní ačkoliv na pozadí je webová aplikace
+    \item Fresh
+
+    Poskytují vždy aktuální data díky procesu update technologie \emph{service workers}
+    \item Zabezpečená
+
+    Výhradní použití HTTPS zamezí odposlouchávání či jiné manipulaci s přijímanými daty
+    \item Znovuzapojení uživatele
+
+    Je možné využít funkce push notifikace, která poté uživatele naláká zpět do aplikace
+    \item Instalovatelná
+
+    Při přístupu na stránku je uživateli nabídnuto si aplikaci stáhnout, poté k ní může přistupovat jako k nativní aplikaci
+    \item Odkazovatelná
+
+    Dá se na ní jednoduše přistoupit pomocí URL bez nustnosti instalace
+\end{itemize}
