@@ -11,7 +11,7 @@ z těchto knihoven či pluginů zkušenosti, a tak když se mi něco nedařilo, 
 
 \section{Vue.js}
 Vue je progresivní JavaScriptový framework, který narozdíl od konkurenčních řešení (React, Angular) nezaštiťuje žádná velká
-korporace, ale je vyvíjen komunitou.\cite{VueJS} Zvolili jsme verzi 3, protože je to lepší řešení do budoucna, než později aktualizovat
+korporace, ale je vyvíjen komunitou.\cite{VueJS} Zvolil jsem verzi 3, protože je to lepší řešení do budoucna, než později aktualizovat
 celou aplikaci z verze 2. V pozdější fázi vývoje se ale ukázalo, že pro verzi 3 nebyla plně dokončena hlavní knihovna, kterou jsem chtěl využít.
 Musel jsem tak ponížit verze všech závislostí a přejít tak na verzi 2.
 
@@ -23,33 +23,30 @@ Bohužel tato knihovna nebyla v době vývoje plně dokončena a byla pouze v al
 % TODO
 
 \section{Vuex}
-Knihovna Vuex se využívá pro uložení stavu aplikace. Je potřeba využít u dat, která jsou využívána na více místech a jejich
+Knihovna Vuex~\cite{Vuex} se využívá pro uložení stavu aplikace. Je potřeba využít u dat, která jsou využívána na více místech a jejich
 předávání skrz komponenty by bylo jinak složité.
 
 \section{Vue i18n}
-I18n je rozšíření pro překlady, díky kterému je možné texty v aplikaci napsat v několika jazycích. Nejprve jsem tvořil aplikaci dvojjazyčně
+I18n~\cite{i18n} je rozšíření pro překlady, díky kterému je možné texty v aplikaci napsat v několika jazycích. Nejprve jsem tvořil aplikaci dvojjazyčně
 v angličtině a čestině, ale nakonec jsem se rozhodl, že prozatím dává aplikace smysl pouze v češtině. Nicméně překlady jsem ponechal a v budoucnu
 je možné je využít.
 
 \section{Firebase}
-Firebase jsem použil na backendu. To mi umožnilo mít vše na jednom místě. Uložiště, databázi, autorizaci uživatelů, hosting atd.
+Firebase~\cite{Firebase} jsem použil na backendu. To mi umožnilo mít vše na jednom místě. Uložiště, databázi, autorizaci uživatelů, hosting atd.
 
 \subsection{Firestore}
-Cloud Firestore je NoSQL dokumentová databáze. Narozdíl od SQL databází, které se soustředí na snížení duplikace dat, se dokumentová
+Cloud Firestore~\cite{Firestore} je NoSQL dokumentová databáze. Narozdíl od SQL databází, které se soustředí na snížení duplikace dat, se dokumentová
 databáze zaměruje na časté aktualizace a změny. Největší rozdíl mezi těmito typy je způsob uložení dat. SQL reprezentuje data pomocí
 tabulek s řádky a sloupci, dokumentová databáze má JSON dokumenty a jejich kolekce. To vede k flexibilnějšímu datovému modelu, rychlejším
-dotazům a lehčímu vývoji pro vývojáře.
+dotazům a lehčímu vývoji pro vývojáře.~\cite{MongoDBNoSQL}
 
 Firestore nabízí vlastní řešení bezpečnosti přes Firebase Rules.
-
-% TODO: https://www.mongodb.com/nosql-explained/nosql-vs-sql
-% TODO: https://firebase.google.com/products/firestore?gclid=CjwKCAjw9LSSBhBsEiwAKtf0n4LxN1LXFGXdwYILgot1F2Sm9j5vVf6RI4KViRZuZDt6rrnohROUlRoCML8QAvD_BwE&gclsrc=aw.ds
 
 \section{Fulltextové vyhledávání}
 
 Při práci s Firebase jsem zjistil, že při dotazování se na záznamy není možné filtrovat podle názvu
 (abych byl přesný, možné to je, ale není to vhodné). Po zkoumání dokumentace, jsem našel stránku s doporučením pro
-fulltextové hledání. V nabídce byla tři řešení. % TODO: Cite https://firebase.google.com/docs/firestore/solutions/search
+fulltextové hledání. V nabídce byla tři řešení.~\cite{FulltextSearch}
 
 \begin{itemize}
     \item Elastic
@@ -59,15 +56,15 @@ fulltextové hledání. V nabídce byla tři řešení. % TODO: Cite https://fir
 
 Problém jsem řešil s vedoucím a přišli jsme na několik možných řešení sami. Stáhnout si data o všech receptech ve formátu
 \emph{id:name} a poté filtrovat výsledky hledání na FE. Dále bychom mohli použít Firebase Cloud Functions, kde bychom
-využili hashování. Nakonec jsme se ale rozhodli, že využijeme jedno z nabízených řešení přímo Googlem.
+využili hashování. Nakonec jsem se ale rozhodl, že využiji jedno z nabízených řešení přímo Googlem.
 
-Vybrali jsme Algolii, kvůli dobré podpoře Vue a Firebase, nejmenší složitosti implementace a bezplatnému základnímu plánu.
+Vybral jsem Algolii~\cite{Algolia}, kvůli dobré podpoře Vue a Firebase, nejmenší složitosti implementace a bezplatnému základnímu plánu.
 
 Při vývoji jsem ale zjistil, že základní režim (tedy 10 000 čtení za měsíc) nejspíše stačit nebude. Nakonec jsem proto přešel na
 frontendové vyhledávání. Všechna data jsem stáhnul při načtení aplikace a poté s nimi dál pracoval.
 
 \section{Vue Router}
-V aplikaci je potřeba mít navigaci. Ve Vue se používá Vue Router, který umožní pohyb po různých stránkách.
+V aplikaci je potřeba mít navigaci. Ve Vue se používá Vue Router~\cite{VueRouter}, který umožní pohyb po různých stránkách.
 
 \subsection{SPA}
 SPA neboli \emph{single page application} je stránka, která využívá takové architektury, kde použitá technologie nejen kontroluje
@@ -94,7 +91,7 @@ být výhodné právě z hlediska bezpečnosti a k uživateli se tak nedostane n
 
 Progresivní webová aplikace se snaží usnadnit vývoj standardních webových aplikací jako nativní aplikace pro mobilní telefony.
 K tomu využívá \emph{service workers} a webové aplikační \emph{manifesty}. Aby se aplikace dala považovat za PWA, měla by
-mít tyto vlastnosti. % TODO: Cite
+mít tyto vlastnosti~\cite{PWAAckee}.
 
 
 \begin{itemize}

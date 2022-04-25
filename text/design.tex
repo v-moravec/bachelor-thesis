@@ -12,7 +12,7 @@ vytvoření wireframu již s designem. K této tvorbě jsem použil nástroj Ado
 U vzhledu jsem se inspiroval moderními operačními systémy jako např. Windows 11~\cite{Windows11}, One UI~\cite{OneUI}
 (nadstavba Android od společnosti Samsung) atd.
 Chtěl jsem dosáhnout jednoduchého, přehledného designu, který bude pro uživatele příjemný na používání. Postupně jsem se
-propracoval přes několik verzí a ve výsledku jsem zvolil průhledný styl podkladu komponent s \emph{mesh gradientem} na pozadí.
+propracoval přes několik verzí a ve výsledku jsem zvolil průhledný styl podkladu komponent s \emph{mesh gradientem}~\cite{MeshGradients} na pozadí.
 
 Již od počátku jsem bral v potaz rozdíly mezi zobrazením na mobilu a počítači, díky čemuž jsem mohl design uzpůsobit
 pro více typů obrazovek. Začal jsem vytvářením úvodní obrazovky, na které se zobrazí rychlé odkazy na nejdůležitější části
@@ -45,8 +45,8 @@ Pro aplikaci bylo potřeba vybrat název a logo. Vzhledem k tomu, že středem v
 Poté jsem založil nový soubor v Photoshopu a pustil se do vytváření loga. Chtěl jsem vytvořit jedno s celým názvem, které bychom použili
 na úvodní stránce a jedno menší, které by se dalo využít jako ikona aplikace, favicon atd.
 
-Zvolil jsem několik fontů z Adobe Fonts a vytvořil návrhy. Menší logo jsem se rozhodl udělat jako první písmeno názvu na pozadí,
-které se použije v aplikaci. Návrhů bylo celkem šest a na Slacku, který jsme využívali pro komunikaci, jsme hlasovali, které je nejlepší.
+Zvolil jsem několik fontů z Adobe Fonts~\cite{AdobeFonts} a vytvořil návrhy. Menší logo jsem se rozhodl udělat jako první písmeno názvu na pozadí,
+které se použije v aplikaci. Návrhů bylo celkem šest a na Slacku~\cite{Slack}, který jsme využívali pro komunikaci, jsme hlasovali, které je nejlepší.
 
 \begin{figure}[h]
     \centering
@@ -79,18 +79,18 @@ dokumentovou databázi.
 \end{figure}
 
 \section{Uložiště ve Firebase}
-Firebase poskytuje i vlastní uložiště dat pod názvem \emph{Cloud Storage}. Zde je potřeba ukládat externí obrázky, které uživatelé
+Firebase poskytuje i vlastní uložiště dat pod názvem \emph{Cloud Storage}~\cite{CloudStorage}. Zde je potřeba ukládat externí obrázky, které uživatelé
 nahrají k receptu či ingredienci. Strukturu složek jsem zde zvolil stejně jako v databázi.
 
 \section{Data v aplikaci}
-Kromě uložení dat na serveru je nutné s nimi pracovat také na frontendu. Zde jsme zvolili \emph{Vuex} pro správu dat. Původně
+Kromě uložení dat na serveru je nutné s nimi pracovat také na frontendu. Zde jsem zvolil \emph{Vuex} pro správu dat. Původně
 můj návrh počítal s tím, že se data budou stahovat postupně, až když je bude uživatel potřebovat. Fungovalo by to tak, že by
 se například na stránce pro recepty zobrazilo 30 receptů a až když by uživatel prošel přes všechny na konec obrazovky, stáhnuly
-by se další. S tímto řešením ale nastal problém, protože jsme spoléhali na to, že na fulltextové vyhledávání použijeme službu
-\emph{Algolia}. Na konec kvůli složitosti řešení a kvůli tomu služba byla nákladná po překročení limitů, jsme tuto možnost zavrhnuli.
+by se další. S tímto řešením ale nastal problém, protože jsem spoléhal na to, že na fulltextové vyhledávání použiji službu
+\emph{Algolia}. Na konec kvůli složitosti řešení a kvůli tomu služba byla nákladná po překročení limitů, jsem tuto možnost zavrhnul.
 
 Zvolil jsem tedy vyhledávání na frontendu, k čemuž je ale potřeba mít všechna data již při startu aplikace. Začal jsem tedy
-zkoumat, zda je možné využít cachování a tím zefektivnit čtení z databáze. \emph{Firestore} poskytuje cache již v základu a bylo
+zkoumat, zda je možné využít cachování a tím zefektivnit čtení z databáze. \emph{Firestore} poskytuje cache již v základu~\cite{FirestoreCache} a bylo
 tedy potřeba ji pouze aktivovat.
 
 \section{Funkce aplikace}

@@ -7,9 +7,30 @@
 
 %TODO: Popsat více?
 Nejprve bylo potřeba zjistit, co by potenciální uživatelé aplikace ocenili, tedy získat od nich požadavky.
-Zvolili jsme kvalitativní průzkum, který se narozdíl od kvantitativního zamřuje na malou skupinu respondentů.
+Zvolil jsem kvalitativní průzkum, který se narozdíl od kvantitativního zaměřuje na malou skupinu respondentů.
 Pro získání odpovědí jsem si připravil sadu otevřených otázek, kterých jsem se držel při rozhovoru. Hovory byly
 uskutečněny online a každy trval mezi dvaceti minutami a jednou hodinou.
+
+Na začátek jsem představil aplikaci a poté jsem se ptal na lehčí otázky, které odlehčili situaci. Postupně jsem se
+propracoval k specifičtějším otázkám. Po několika rozhovorech se již odpovědi začaly opakovat a tak jsem už další
+neprováděl.
+
+\subsection{Seznam otázek}
+\begin{itemize}
+    \item Jak často vaříš?
+    \item Co ti na vaření vadí a co tě naopak baví?
+    \item Jaké recepty používáš?
+    \item Používáš online recepty (co ti na nich vadí), pokud ano, na mobilu nebo na PC?
+    \item Jak vypadají recepty, které máš napsané na papíru?
+    \item Máš radši vlastní recepty nebo hledáš inspiraci jinde?
+    \item Upravuješ si cizí recepty, popřípadě jak?
+    \item Co si myslíš o možnosti vytvoření vlastní online kolekce receptů, které máš na papíře?
+    \item Uvítal bys, kdyby se importování receptů provádělo pomocí telefonu?
+    \item Je něco, co by vaření podle online receptů usnadnilo?
+    \item Jak často nakupuješ?
+    \item Kolik času nakupováním strávíš?
+    \item Použil jsi někdy rohlik.cz nebo podobné služby?
+\end{itemize}
 
 Všechny rozhovory byly vedeny v rozmezí dvou týdnů a poté jsem z nich sestavil funkční a nefunkční požadavky.
 
@@ -58,7 +79,7 @@ Všechny rozhovory byly vedeny v rozmezí dvou týdnů a poté jsem z nich sesta
     funkce nebo se nevyplatila finančně, je možné přejít na jiný backend.
 \end{itemize}
 
-\begin{figure}[h]
+\begin{figure}[H]
     \includegraphics[width=\textwidth]{images/pozadavky}
     \caption{Model požadavků} \label{picture:recipeo:pozadavky}
 \end{figure}
@@ -84,7 +105,7 @@ kde je jich často více než tisíc.
 Celkem hezký nápad jsou fotorecepty. Uživatele provedou celým vařením pomocí kroků, přičemž u každého je fotodokumentace jak daný krok
 provést.
 
-\begin{figure}[h]
+\begin{figure}[H]
     \includegraphics[width=\textwidth]{images/varenicz-uvodni-stranka}
     \caption{Hlavní stránka vareni.cz} \label{picture:varenicz:uvodni-stranka}
 \end{figure}
@@ -98,7 +119,7 @@ sdílení zhodnotit nemohu, kvůli výše zmíněným problémům. Našel jsem f
 pravděpodobně jedná o náhodné doporučení, které nemá nic společného s tím co má uživatel rád. Dále je na webu dostupný
 online magazín, kde jsou různé články týkající se gastronomie.
 
-\begin{figure}[h]
+\begin{figure}[H]
     \includegraphics[width=\textwidth]{images/topreceptycz-uvodni-stranka}
     \caption{Hlavní stránka toprecepty.cz} \label{picture:topreceptycz:uvodni-stranka}
 \end{figure}
@@ -113,7 +134,7 @@ zda bude veřejný nebo se zobrazí pouze mě. Po kliknutí na tlačítko \uv{Ul
 Zobrazení receptu je podobné tomu na vareni.cz, ale přijde mi více přehledné. U kroků se zobrazují rady, které ale
 nemají s daným krokem nic společného, spíše odkazují na náhodné články či recepty.
 
-\begin{figure}[h]
+\begin{figure}[H]
     \includegraphics[width=\textwidth]{images/receptycz-uvodni-stranka}
     \caption{Hlavní stránka recepty.cz} \label{picture:receptycz:uvodni-stranka}
 \end{figure}
@@ -123,6 +144,8 @@ nemají s daným krokem nic společného, spíše odkazují na náhodné článk
 Existující řešení na vyhledávání receptů nabízejí pouze veřejné recepty a mají spoustu reklam. Moje řešení bude poskytovat
 možnost soukromé sbírky receptů a jejich sdílení s vybranými uživateli či pomocí odkazu.
 
+Sestavil jsem tabulku s hodnocením od jedné do pěti, stejné jako se používá ve škole. Každý aspekt jsem ohodnotil pro všechny
+stránky, které jsem zahrnul v porovnání a přidal jsem skóre, které je v souladu s parametry mojí aplikace.
 
 \begin{table}[H]\centering
     \caption{~Porovnání konkurenčních řešení}\label{tab:recipeo:konkurencni-reseni}
@@ -143,7 +166,7 @@ Tudíž jsme chtěli tuto funkcionalitu zachovat a přidat možnosti jako např�
 či zobrazení interaktivního nákupního listu.
 
 \subsection{Komunikace s Rohlíkem a Košíkem}
-Nejdříve jsme se rozhodli kontaktovat Rohlík. Po pár vyměněných e-mailech jsme obdrželi celou dokumentaci k jejich API,
+Nejdříve jsem se rozhodl kontaktovat Rohlík. Po pár vyměněných e-mailech jsem obdržel celou dokumentaci k jejich API,
 které nám otevřelo spoutu možností i do budoucna. Například bychom mohli sledovat, jaké suroviny jsou právě ve slevě a
 podle toho doporučovat jídla.
 

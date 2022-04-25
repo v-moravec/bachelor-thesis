@@ -8,18 +8,18 @@ technologií, které jsem představil dříve.
 
 \section{Založení projektu}
 Před touto prací jsem neměl žádné zkušenosti se zakládáním větších projektů. Domluvil jsem se tedy s vedoucím a společně
-jsme založili projekt pro \emph{Vue} aplikaci. Měli jsme již připravený \emph{Github} repozitář, ve kterém jsme projekt
-verzovali.
+jsme založili projekt pro \emph{Vue} aplikaci. Měl jsem již připravený \emph{Github} repozitář, ve kterém jsem projekt
+verzoval~\cite{GithubAbout}.
 
-Pro založení jsme využili \emph{vue ui} (grafická nadstavba \emph{vue cli}), což je grafické rozhraní pro správu \emph{Vue} projektů.
-Zde jsme zvolili konfiguraci a přidali pluginy. Poté bylo potřeba některé z nich inicializovat.
+Pro založení jsem využil \emph{vue ui} (grafická nadstavba \emph{vue cli}), což je grafické rozhraní pro správu \emph{Vue} projektů.
+Zde jsem zvolil konfiguraci a přidali pluginy. Poté bylo potřeba některé z nich inicializovat.
 
 \subsection{Firebase}
-Nejdříve jsme založili projekt ve \emph{Firebase}. Stačí se přihlásit, otevřít konzoli a kliknout na tlačítko pro vytvoření projektu.
-Poté se zadá název, popřípadě se projde konfigurací \emph{Google Analytics}. Rovnou jsme přešli na \emph{Blaze plan}, díky kterému
+Nejdříve jsem založili projekt ve \emph{Firebase}. Stačí se přihlásit, otevřít konzoli a kliknout na tlačítko pro vytvoření projektu.
+Poté se zadá název, popřípadě se projde konfigurací \emph{Google Analytics}. Rovnou jsem přešel na \emph{Blaze plan}~\cite{FirebasePricing}, díky kterému
 se otevřelo více možností. Je ale potřeba si kontrolovat, že aplikace nepřesáhne žádné limity~\cite{FirebaseLimits}, jinak se strhne
 částka ze zadané platební karty. To se dá dělat buď manuálně nebo stanovit \emph{budget}, který aplikace nesmí za měsíc přesáhnout.
-Po vyčerpání poloviny tohoto limitu přijde upozornění na email správce aplikace.
+Po vyčerpání poloviny tohoto limitu přijde upozornění na email správce aplikace~\cite{FirebaseBudget}.
 
 Po založení se do projektu přidá aplikace. Díky tomu \emph{Firebase} vygeneruje kód, který se musí do aplikace přidat.
 Pomocí \mintinline{console}|npm install firebase| se do projektu přidá potřebný balíček. Poté je potřeba přidat vygenerovaný
@@ -33,8 +33,7 @@ Je velmi pohodlné, když se při změně kódu automaticky nahraje nová verze 
 při zakládání projektu a po celou dobu vývoje, jsem měl do pár minut po nahrání dostupnou verzi pro testování odkudkoliv.
 
 Při \mintinline{console}|firebase init| se vytvoří \emph{yml} soubory v složce \emph{.github}. Díky těmto souborům se pak při
-\emph{pull requestu} nebo \emph{merge} spustí proces, který sestaví aplikaci a výsledný \emph{build} nahraje na \emph{Firebase Hosting}.
-
+\emph{pull requestu} nebo \emph{merge} spustí proces, který sestaví aplikaci a výsledný \emph{build} nahraje na \emph{Firebase Hosting}~\cite{FirebaseHosting}.
 
 \section{Struktura projektu}
 Vytvoření složek a základní rozdělení jsem ponechal na \emph{vue ui}. Konfigurační soubory se nachází v \emph{rootu} projektu, implementace
@@ -150,7 +149,7 @@ daty.
 Co se týče \emph{PWA}, změnil jsem v konfiguračním souboru název a tématickou barvu. Poté jsem přidat komponentu pro aktualizaci aplikace.
 Uživateli se zobrazí, když je na server nahrána nová verze. Uživatel poté klikne na tlačítko \emph{Obnovit} a aplikace se spustí s novou verzí.
 Tento dialog se mi nejdříve nedařilo správně zobrazovat, protože jsem posílal špatný typ zprávy pro \emph{service workera}. Místo objektu s
-klíčem \emph{type} jsem posílal pouze string se zprávou.
+klíčem \emph{type} jsem posílal pouze string se zprávou~\cite{PWAServiceWorker}.
 
 \begin{listing}[h]
     \caption{Správná zpráva pro aktualizaci}
@@ -170,8 +169,6 @@ pastelově zelenou \emph{\#79ffa1} \fcolorbox{black}{recipeo-light-green}{\rule{
 Pro změnu barev jsem využil Vuetify a jeho nastavení \emph{theme}. Komponenty z Vuetify mají většinou \emph{prop color}, díky
 kterému je možné změnit barvu. Pro prvky mimo Vuetify je možné využít CSS proměnné, která se automaticky vytvoří.
 
-% TODO: Přidal barevnou paletu pro zobrazení barev
-
 \section{Firebase}
 
 Knihovnu Firebase jsem již představil v předchozích kapitolách. V této sekci popíšu jak knihovnu používat.
@@ -179,7 +176,7 @@ Knihovnu Firebase jsem již představil v předchozích kapitolách. V této sek
 \subsection{Firebase Auth}
 \emph{Firebase} dokáže řešit i přihlášení uživatele. Nejprve jsem chtěl mít dva způsoby přihlášení, přes email a heslo a přes
 Google. Nakonec po domluvě s vedoucím jsem zvolil prozatím ponechat pouze Google přihlášení, abychom nemuseli řešit ukládání
-dat uživatele jinam než právě do \emph{Auth}. Zapnutí různých možností autentizace je možné ve webové konzoli. V případě Googlu
+dat uživatele jinam než právě do \emph{Auth}~\cite{FirebaseAuth}. Zapnutí různých možností autentizace je možné ve webové konzoli. V případě Googlu
 stačilo přidat kontaktní email a služba se spustila.
 
 Na frontendu jsem tedy vytvořil formulář pro přihlášení a registraci. Pro budoucí využití pří případném přechodu na jinou formu
@@ -192,19 +189,18 @@ Díky tomu se \emph{pop-up} otevře na naší doméně a ne na původní vygener
 % TODO: Jak se fulltext. řešilo s Algolií
 \subsubsection{Algolia}
 Jak jsem již popisoval, nejdříve jsem zvolil řešení s technologií Algolia. Bylo tedy potřeba založit nový projekt. Po jeho založení
-jsem vytvořil index \emph{recipes}, do kterého se synchronizovala data z Firebase. To se dělo díky rozšíření, které vytvořilo přímo % TODO: % https://firebase.google.com/products/extensions/algolia-firestore-algolia-search
+jsem vytvořil index \emph{recipes}, do kterého se synchronizovala data z Firebase. To se dělo díky rozšíření~\cite{AlgoliaExtension}, které vytvořilo přímo
 zastoupení Algolie. Měl jsem nejdříve s tímto rozšířením problémy, ale později jsem zjistil, že se mi data nesynchronizují, protože jsem
 poskytl do naší aplikace ve Firebase špatný API klíč. Ten měl práva pouze na čtení, ovšem už ne na zápis. Synchronizace se tedy vždy odeslala,
 ale Algolia ji odmítnula a ponechala v indexu stará data.
 
-Po prvních pár dnech jsme zjistili, že počet čtení je celkem vysoký, hlavně kvůli tomu, že se vyhledávání na serveru spustí po
+Po prvních pár dnech jsem zjistil, že počet čtení je celkem vysoký, hlavně kvůli tomu, že se vyhledávání na serveru spustí po
 každém napsaném písmenku. Využil jsem tedy \emph{debounce} funkci, která tato vyhledávání snížila. \emph{Debounce} funguje tak,
 že se spustí vždy, když uživatel stiskne klávesu na klávesnici. Poté je nastavený časový limit a pokud do té doby nic nenapíše,
 spustí se \emph{callback}, tedy v našem případě funkce která zařídí vyhledávání.
 
-Dále jsem díky~\cite{AlgoliaBlog} zjistil, že je % TODO: Cite https://pipo.blog/articles/20210830-algolia-vue-instantsearch
-možné limitovat volání při načtení komponenty. V základu se totiž při každém načtení vyčerpají dvě zavolání kvůli optimalizaci rychlosti
-vyhledávání.
+Dále jsem díky~\cite{AlgoliaBlog} zjistil, že je možné limitovat volání při načtení komponenty. V základu se totiž při každém
+načtení vyčerpají dvě zavolání kvůli optimalizaci rychlosti vyhledávání.
 
 I přes všechny tyto vylepšení bylo nemožné udržet počet vyhledávání pod limitem 10 000 za měsíc, protože já samotný při vývoji,
 kdy jsem až tolik vyhledávání nevyužíval, vyčerpal přes deset procent z limitu.
@@ -233,7 +229,8 @@ Základní spuštění je velmi jednoduché, stačí zavolat importovanou metodu
 \end{listing}
 
 Jako parametr je potřeba předat instanci Firestore, kterou lze získat s parametrem pro neomezenou velikost, tím pádem se nebudou
-mazat záznamy kvůli úspoře místa.
+mazat záznamy kvůli úspoře místa. Je také nutné přidat parametr \emph{forceOwnership}, protože jinak se cache rozbije při více
+otevřených záložkách se stejnou aplikací~\cite{FirebaseMultipleTabs}.
 
 \begin{listing}[h]
     \caption{Získání instance Firestore}
@@ -292,7 +289,7 @@ pravidlo a pokud je splněna podmínka, data se odešlou. Ve výchozím stavu js
     \end{minted}
 \end{listing}
 
-Při zobrazení editace pravidel se v levé části pod historií pravidel nachází \emph{Rules playground}. V této záložce je možné
+Při zobrazení editace pravidel se v levé části pod historií pravidel nachází \emph{Rules playground}~\cite{FirebaseRulesPlayground}. V této záložce je možné
 testovat vytvořená pravidla. Vývojář může zvolit typ dotazu, tedy \emph{get, create, update \emph{nebo} delete}, dále specifikovat
 zdroj, ze kterého chceme data dostat (nějaká kolekce) a nakonec určit, zda se požadavek bude simulován pod přihlášeným uživatelem
 či nikoliv. U uživatele lze nastavit \emph{provider}, \emph{uid}, email (i zda byl verifikován), jméno a telefon. Nakonec se pomocí tlačítka
@@ -309,8 +306,8 @@ zdroj, ze kterého chceme data dostat (nějaká kolekce) a nakonec určit, zda s
     \caption{Povolení přístupu v Rules playground} \label{picture:recipeo:rules-allowed}
 \end{figure}
 
-\subsection{Firestore Functions}
-Cloudové funkce jsem využil pro místa v aplikaci, kde nebylo možné pomocí Firestore Rules správně ošetřit bezpečnost dat.
+\subsection{Firebase Functions}
+Cloudové funkce~\cite{FirebaseFunctions} jsem využil pro místa v aplikaci, kde nebylo možné pomocí Firestore Rules správně ošetřit bezpečnost dat.
 Poprvé jsem napsal funkce, díky kterým se stáhnul určitý počet receptů, ke kterým měl uživatel přístup. Využil jsem stránkování,
 což znamená, že když uživatel přišel na stránku s recepty, stáhlo se pouze omezené množství a až když bylo potřeba, aplikace požádala
 server o další. Díky tomu jsem nemusel vytvářet žádná pravidla, stačilo nechat celou databázi zamknutou, protože ve Functions se přistupuje
@@ -322,10 +319,10 @@ zobrazí dialog s pozvánkou a tlačítko \emph{Připojit}. Po stisku tohoto tla
 zapíše identifikátor uživatele do pole \emph{userIds}, které je v dokumentu dané skupiny. K tomu se dá využít funkce \emph{arrayUnion}, kterou poskytuje
 Firebase k jednoduchým operacím na poli. Díky tomu se nemůže stát, že by nastala duplikace jednoho uživatele.
 
-Firebase nabízí různé typy emulátorů, ovšem jediný který jsem využil byl právě \emph{Functions emulator}. Díky tomu jsem mohl lokálně testovat, jak vypadají
+Firebase nabízí různé typy emulátorů, ovšem jediný který jsem využil byl právě \emph{Functions emulator}~\cite{FirebaseEmulator}. Díky tomu jsem mohl lokálně testovat, jak vypadají
 data, která odesílá server a nemusel pokaždé čekat, než se funkce nahrají na server, což při větším počtu trvá až několik minut. Také jsem tento lokální server
 využil při problémech s právy. Několikrát se mi stalo, že funkce spadla či mi odepřela přístup. Pomocí emulátoru jsem tak zjistil, zda je špatně napsaná funkce
 nebo není správně nakonfigurovaná. Poté jsem našel v dokumentaci našel, že je potřeba u některých funkcí přidat roli pro autorizování volání funkce v Google
-Cloud platfomě. % TODO: Citace https://cloud.google.com/functions/docs/securing/managing-access-iam
+Cloud platfomě~\cite{CloudRights}.
 
 % TODO: Problémy s přístupem k funkci https://console.cloud.google.com/functions/details/europe-west3/joinGroup?project=recipeo-2e1c9&authuser=0&hl=en&tab=permissions
