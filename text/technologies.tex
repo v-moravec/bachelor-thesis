@@ -40,7 +40,7 @@ databáze zaměruje na časté aktualizace a změny. Největší rozdíl mezi t�
 tabulek s řádky a sloupci, dokumentová databáze má JSON dokumenty a jejich kolekce. To vede k flexibilnějšímu datovému modelu, rychlejším
 dotazům a lehčímu vývoji pro vývojáře.~\cite{MongoDBNoSQL}
 
-Firestore nabízí vlastní řešení bezpečnosti přes Firebase Rules.
+Firestore nabízí vlastní řešení bezpečnosti přes Firebase Rules, které více přiblížím v kapitole o implementaci pomocí ukázek.
 
 \section{Fulltextové vyhledávání}
 
@@ -63,7 +63,7 @@ Vybral jsem Algolii~\cite{Algolia}, kvůli dobré podpoře Vue a Firebase, nejme
 Při vývoji jsem ale zjistil, že základní režim (tedy 10 000 čtení za měsíc) nejspíše stačit nebude. Nakonec jsem proto přešel na
 frontendové vyhledávání. Všechna data jsem stáhnul při načtení aplikace a poté s nimi dál pracoval.
 
-\section{Vue Router}
+\section{Vue Router} % TODO: Více rozepsat
 V aplikaci je potřeba mít navigaci. Ve Vue se používá Vue Router~\cite{VueRouter}, který umožní pohyb po různých stránkách.
 
 \subsection{SPA}
