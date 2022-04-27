@@ -86,9 +86,11 @@ Všechny rozhovory byly vedeny v rozmezí dvou týdnů a poté jsem z nich sesta
 
 \section{Existující řešení}
 
+\subsection{Webové stránky}
+
 Porovnal jsem nejpoužívanější české portály s recepty. Některé z nich nabízejí další obsah jako například blog či magazín.
 
-\subsection{Vareni.cz}
+\subsubsection{Vareni.cz}
 
 Na vareni.cz~\cite{VareniCZ} se nachází několik reklam, které jsou velké a rušivé. Není zde možné si přidat soukromý recept a sdílet ho
 pouze s vybranými uživateli. Celkový koncept přidání receptu je pouze veřejný, není tedy možné si zde vytvořit sbírku
@@ -110,7 +112,7 @@ provést.
     \caption{Hlavní stránka vareni.cz} \label{picture:varenicz:uvodni-stranka}
 \end{figure}
 
-\subsection{Toprecepty.cz}
+\subsubsection{Toprecepty.cz}
 
 Na tomto portálu~\cite{TopreceptyCZ} byla bohužel nefunkční registrace, takže jsem nemohl nahlédnout na funkce poskytované přihlášeným
 uživatelům. Opět zde byla přítomna velká reklama, která zabírala většinu stránky. Jinak byl web navrhnut přehledně,
@@ -124,7 +126,7 @@ online magazín, kde jsou různé články týkající se gastronomie.
     \caption{Hlavní stránka toprecepty.cz} \label{picture:topreceptycz:uvodni-stranka}
 \end{figure}
 
-\subsection{Recepty.cz}
+\subsubsection{Recepty.cz}
 
 I třetí zástupce~\cite{ReceptyCZ} existujících řešení používá reklamu přes celou stránku okolo jejího obsahu. Podobně jako toprecepty.cz
 je zde magazín obsahující příspěvky na spoustu témat o vaření. U přidání receptu nebylo napsané, co se s receptem stane,
@@ -139,13 +141,58 @@ nemají s daným krokem nic společného, spíše odkazují na náhodné článk
     \caption{Hlavní stránka recepty.cz} \label{picture:receptycz:uvodni-stranka}
 \end{figure}
 
+\subsection{Mobilní aplikace}
+
+Vzhledem k tomu, že se kromě zobrazení na počítači snažím vytvořit i aplikaci přizpůsobenou pro mobilní zařízení, není od věci
+si projít aplikace obsahující recepty. Vlastním telefon s operačním systémem Android a tak jsem stahoval aplikace z Obchodu Play.
+Přístup k iOS nemám a tak jsem aplikace pro tento OS nezkoumal.
+
+\subsubsection{Vareni.cz}
+Tato aplikace~\cite{VareniCZAplikace} je založena na webové stránce, kterou jsem již popsal dříve. Recepty jsou v nabídce stejné, což by se dalo očekávat,
+když jde o stejného tvůrce, ale co mě překvapilo je, že v aplikaci je pouze omezené množství receptů a více jich nelze získat, pouze
+po připojení přes webový prohlížeč. Aplikace má jednu obrovskou výhodu a to sice že nezobrazuje žádné reklamy nebo se mi alespoň na
+žádnou nepodařilo narazit.
+
+Po spuštění se uživateli zobrazí základní rozdělení receptů do kategorií jako polévky, přílohy nebo hlavní chody. Je to jediná možnost
+jak filtrovat recepty a jinak lze vyhledávat podle slovního spojení, ale to se mi moc neosvědčilo, protože výsledky neodpovídaly slovům,
+která jsem zadal. Dále si uživatel může označit oblíbené recepty, které se mu zobrazí pod speciální záložkou.
+
+Aplikace je celkově velmi chudá a nabízí omezené množství funkcí narozdíl od webové verze.
+
+\subsubsection{Jíme zdravě}
+Jako další aplikaci jsem si vybral Jíme zdravě. Aplikace měla výborné hodnocení a poměrně vysoký počet stažení na to o jakou aplikaci se jedná.
+Po spuštění se musí uživatel přihlásit přes Facebook nebo pomocí emailu. Poté už se zobrazí hlavní obrazovka aplikace, tedy záložka \uv{Objevuj}.
+Aplikace má líbivý a moderní vzhled a dá se v ní lehce orientovat. Zobrazení receptu je organizované a přehledné. Je možné si zakoupit
+prémium verzi a tím uživatel dostane přístup ke všem receptům a kuchařkám, které aplikace obsahuje.
+
+\begin{table}[H]\centering
+\caption{~Porovnání základní a premium verze}\label{tab:jimezdrave:zakladpremium}
+\begin{tabular}{l|c|c}
+    Typ		                                    & Základ    & Premium   \tabularnewline \hline
+    Ukládání receptů		                    & Ano		& Ano       \tabularnewline \hline
+    Poznámky k receptům	                        & Ano       & Ano       \tabularnewline \hline
+    Hodnocení receptů	                        & Ano		& Ano       \tabularnewline \hline
+    1000 receptů z kuchařek	                    & Ne		& Ano       \tabularnewline \hline
+    Přístup k videokurzům	                    & Ne		& Ano       \tabularnewline \hline
+    Vaření z lednice / spíže                    & Ne        & Ano       \tabularnewline \hline
+    Recepty dostupné offline                    & Ne        & Ano       \tabularnewline \hline
+    Appka bez reklam                            & Ne        & Ano       \tabularnewline \hline
+    Nákupní seznam                              & Ne        & Dostupné v květnu 2022    \tabularnewline \hline
+    Týdenní plánovač jídel                      & Ne        & Dostupné v červnu 2022    \tabularnewline \hline
+    Vybrané recepty na míru                     & Ne        & Dostupné v červenci 2022  \tabularnewline
+\end{tabular}
+\end{table}
+
+Zdá se tedy, že Jíme zdravě je nejblíže k aplikaci, kterou se snažím vytvořit já, ale zaměřuje se výhradně na zdravé recepty.
+
 \subsection{Závěr}
 
 Existující řešení na vyhledávání receptů nabízejí pouze veřejné recepty a mají spoustu reklam. Moje řešení bude poskytovat
 možnost soukromé sbírky receptů a jejich sdílení s vybranými uživateli či pomocí odkazu.
 
 Sestavil jsem tabulku s hodnocením od jedné do pěti, stejné jako se používá ve škole. Každý aspekt jsem ohodnotil pro všechny
-stránky, které jsem zahrnul v porovnání a přidal jsem skóre, které je v souladu s parametry mojí aplikace.
+stránky, které jsem zahrnul v porovnání a přidal jsem skóre, které je v souladu s parametry mojí aplikace. V tabulce jsou pouze
+webové stránky.
 
 \begin{table}[H]\centering
     \caption{~Porovnání konkurenčních řešení}\label{tab:recipeo:konkurencni-reseni}
