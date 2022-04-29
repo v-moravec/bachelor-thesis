@@ -99,6 +99,9 @@
 \usepackage{graphicx} % typesetting of sources
 \usepackage[allfiguresdraft]{draftfigure} % TODO: Comment this line to get images rendered
 \usepackage{subfig}
+\usepackage{xevlna}		% for non-breakable whitespaces
+
+\renewcommand\theFancyVerbLine{\normalsize\arabic{FancyVerbLine}}
 
 \definecolor{recipeo-light-green}{RGB}{121, 255, 161}
 \definecolor{recipeo-light-blue}{RGB}{29, 125, 238}
@@ -268,6 +271,6 @@
 
 \printbibliography[title = {Zdroje}] % print out the BibLaTeX-generated bibliography list
 
-%\include{text/medium} % include `medium.tex' from `text/' subdirectory
+\include{text/medium} % include `medium.tex' from `text/' subdirectory
 
 \end{document}
