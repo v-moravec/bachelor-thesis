@@ -61,7 +61,7 @@ které se použije v aplikaci. Návrhů bylo celkem šest a na Slacku~\cite{Slac
 \end{figure}
 
 \section{Databáze ve Firebase}
-Jak jsem již zmínil, \emph{Firestore} je databáze ve službě \emph{Firebase}. Vytvořil jsem doménový model, který jsem ale poté musel přetransformoval pro
+Jak jsem již zmínil v kapitole 4, \emph{Firestore} je databáze ve službě \emph{Firebase}. Vytvořil jsem doménový model, který jsem ale poté musel přetransformoval pro
 dokumentovou databázi.
 
 \subsection{Doménový model}
@@ -91,4 +91,4 @@ by se další. S tímto řešením ale nastal problém, protože jsem spoléhal 
 
 Zvolil jsem tedy vyhledávání na frontendu, k čemuž je ale potřeba mít všechna data již při startu aplikace. Začal jsem tedy
 zkoumat, zda je možné využít cachování a tím zefektivnit čtení z databáze. \emph{Firestore} poskytuje cache již v základu~\cite{FirestoreCache} a bylo
-tedy potřeba ji pouze aktivovat.
+tedy potřeba ji pouze aktivovat. Dále přiblížím jak s touto funkcí pracovat v kapitole Implementace.

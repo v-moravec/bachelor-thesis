@@ -23,8 +23,18 @@ Bohužel tato knihovna nebyla v době vývoje plně dokončena a byla pouze v al
 % TODO
 
 \section{Vuex}
-Knihovna Vuex~\cite{Vuex} se využívá pro uložení stavu aplikace. Je potřeba využít u dat, která jsou využívána na více místech a jejich
+Knihovna Vuex~\cite{Vuex} se využívá pro uložení stavu aplikace. Je vhodné ji využít u dat, která jsou využívána na více místech a jejich
 předávání skrz komponenty by bylo jinak složité.
+
+Změna či přístup k stavu a všechny operace nad ním se řeší ve speciálním souboru, kde se Vuex inicializuje. K těmto operacím využijeme \emph{state, mutations, getters, actions a modules}.
+\emph{State} označuje strukturu dat, tedy pokud potřebuji nějak zaznamenávat recepty, vytvořím zde pole či objekt a s ním dále pracuji. Pro to abych přidal recept využiji \emph{actions} v kombinaci s
+\emph{mutations}. \emph{Actions} je obal funkcí, které můžu zavolat odkudkoliv z aplikace a ty provedou nějakou změnu nad daty. Například data stáhnou, aktualizují nebo nastaví hodnotu, kterou uživatel
+zadá. Mutations poté vyvoláme pomocí funkce \mintinline{js}|commit|. Té předáme název mutace, která se má zavolat a tzv. \emph{payload}, tedy data, která chceme do stavu zapsat. Mutace již poté pouze zapíše
+do stavu a nic dalšího by řešit neměla.
+
+Pro získání stavu lze využít \emph{getters}. V těchto funkcích by také neměla být žádná další logika, ačkoliv se zde dá vytvořit drobné filtrování či řazení.
+Když se aplikace rozroste a obsahuje mnoho dat, tak aby všechny tyto části byly přehledné, je možné vytvořit více modulů a spravovat data která mají něco společného
+odděleně. Samotné moduly se pak naimportují do \emph{modules} a jsou přístupné v celé aplikaci.
 
 \section{Vue i18n}
 I18n~\cite{i18n} je rozšíření pro překlady, díky kterému je možné texty v aplikaci napsat v několika jazycích. Nejprve jsem tvořil aplikaci dvojjazyčně
@@ -32,7 +42,11 @@ v angličtině a čestině, ale nakonec jsem se rozhodl, že prozatím dává ap
 je možné je využít.
 
 \section{Firebase}
-Firebase~\cite{Firebase} jsem použil na backendu. To mi umožnilo mít vše na jednom místě. Uložiště, databázi, autorizaci uživatelů, hosting atd.
+Firebase~\cite{Firebase} jsem použil na backendu. To mi umožnilo mít vše na jednom místě. Uložiště, databázi, autorizaci uživatelů, hosting atd. % TODO What is this? PaaS
+
+\subsection{Ceny}
+Firebase má velikou výhodu v tom, že je zdarma, pokud uživatelé nevyčerpají určitý objem dat či přístupů k databázi. Tato kapacita se resetuje
+denně nebo měsíčně, podle toho o jaký podsystém se jedná.
 
 \subsection{Firestore}
 Cloud Firestore~\cite{Firestore} je NoSQL dokumentová databáze. Narozdíl od SQL databází, které se soustředí na snížení duplikace dat, se dokumentová
@@ -41,6 +55,8 @@ tabulek s řádky a sloupci, dokumentová databáze má JSON dokumenty a jejich 
 dotazům a lehčímu vývoji pro vývojáře.~\cite{MongoDBNoSQL}
 
 Firestore nabízí vlastní řešení bezpečnosti přes Firebase Rules, které více přiblížím v kapitole o implementaci pomocí ukázek.
+
+% TODO: Rozšíření
 
 \section{Fulltextové vyhledávání}
 
@@ -97,7 +113,7 @@ mít tyto vlastnosti~\cite{PWAAckee}.
 \begin{itemize}
     \item Progresivní
 
-    Dostupné pro všechny uživatele nehledě na typ prohlížeče
+    Je použitelná na starších prohlížečích s určitými omezeními, ale plně funkční na nejnovějších verzích prohlížečů.
     \item Responzivní
 
     Stránka je optimalizována pro všechny typy obrazovek (od nejmenších telefonů, přes notebooky až po velké PC monitory)
@@ -107,15 +123,16 @@ mít tyto vlastnosti~\cite{PWAAckee}.
     \item App-like
 
     Aplikace vypadá jako nativní ačkoliv na pozadí je webová aplikace
-    \item Fresh
+    \item Aktuální
 
-    Poskytují vždy aktuální data díky procesu update technologie \emph{service workers}
+    Poskytují vždy aktuální verzi díky procesu update technologie \emph{service workers}
     \item Zabezpečená
 
     Výhradní použití HTTPS zamezí odposlouchávání či jiné manipulaci s přijímanými daty
     \item Znovuzapojení uživatele
 
-    Je možné využít funkce push notifikace, která poté uživatele naláká zpět do aplikace
+    Je možné využít funkce push notifikace, která poté uživatele naláká zpět do aplikace \footnote{Tyto push notifikace z webového prohlížeče jsou již několik let běžnou
+    záležitostí na systému Android, ale do iOS od společnosti Apple se dostaly teprve nedávno~\cite{PWANotifications}.}
     \item Instalovatelná
 
     Při přístupu na stránku je uživateli nabídnuto si aplikaci stáhnout, poté k ní může přistupovat jako k nativní aplikaci

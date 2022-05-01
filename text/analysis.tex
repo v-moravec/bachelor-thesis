@@ -160,7 +160,7 @@ která jsem zadal. Dále si uživatel může označit oblíbené recepty, které
 Aplikace je celkově velmi chudá a nabízí omezené množství funkcí narozdíl od webové verze.
 
 \subsubsection{Jíme zdravě}
-Jako další aplikaci jsem si vybral Jíme zdravě. Aplikace měla výborné hodnocení a poměrně vysoký počet stažení na to o jakou aplikaci se jedná.
+Jako další aplikaci jsem si vybral Jíme zdravě~\cite{JimeZdrave}. Aplikace měla výborné hodnocení a poměrně vysoký počet stažení na to o jakou aplikaci se jedná.
 Po spuštění se musí uživatel přihlásit přes Facebook nebo pomocí emailu. Poté už se zobrazí hlavní obrazovka aplikace, tedy záložka \uv{Objevuj}.
 Aplikace má líbivý a moderní vzhled a dá se v ní lehce orientovat. Zobrazení receptu je organizované a přehledné. Je možné si zakoupit
 prémium verzi a tím uživatel dostane přístup ke všem receptům a kuchařkám, které aplikace obsahuje.
@@ -190,19 +190,17 @@ Zdá se tedy, že Jíme zdravě je nejblíže k aplikaci, kterou se snažím vyt
 Existující řešení na vyhledávání receptů nabízejí pouze veřejné recepty a mají spoustu reklam. Moje řešení bude poskytovat
 možnost soukromé sbírky receptů a jejich sdílení s vybranými uživateli či pomocí odkazu.
 
-Sestavil jsem tabulku s hodnocením od jedné do pěti, stejné jako se používá ve škole. Každý aspekt jsem ohodnotil pro všechny
-stránky, které jsem zahrnul v porovnání a přidal jsem skóre, které je v souladu s parametry mojí aplikace. V tabulce jsou pouze
-webové stránky.
+Sestavil jsem tabulku s hodnocením od jedné do pěti, stejné jako se používá ve škole\footnote{Hodnocení recipeo.cz je na základě návrhu, ne podle výsledné verze.}.
+Každý aspekt jsem ohodnotil pro všechny stránky, které jsem zahrnul v porovnání a přidal jsem skóre, které je v souladu s parametry mojí aplikace.
 
 \begin{table}[H]\centering
     \caption{~Porovnání konkurenčních řešení}\label{tab:recipeo:konkurencni-reseni}
     \begin{tabular}{l|c|c|c|c}
-        Typ		    & vareni.cz & toprecepty.cz & recepty.cz & recipeo.cz
-        \footnote{Hodnocení recipeo.cz je na základě návrhu, ne podle výsledné verze}  \tabularnewline \hline
-        Reklamy		& 4		    & 2	            & 3          & 1          \tabularnewline \hline
+        Typ		                & vareni.cz & toprecepty.cz & recepty.cz & recipeo.cz \tabularnewline \hline
+        Reklamy		            & 4		    & 2	            & 3          & 1          \tabularnewline \hline
         Zobrazení receptu	    & 3		    & 2	            & 3          & 1          \tabularnewline \hline
-        Doporučování receptů	    & 2		    & 2	            & 2          & 3          \tabularnewline \hline
-        Model sdílení	    & 4		    & 4	            & 4          & 2          \tabularnewline \hline
+        Doporučování receptů	& 2		    & 2	            & 2          & 3          \tabularnewline \hline
+        Model sdílení	        & 4		    & 4	            & 4          & 2          \tabularnewline \hline
         Zjednodušení nákupu	    & 4		    & 3	            & 2          & 1          \tabularnewline
     \end{tabular}
 \end{table}
@@ -214,15 +212,25 @@ Tudíž jsme chtěli tuto funkcionalitu zachovat a přidat možnosti jako např�
 či zobrazení interaktivního nákupního listu.
 
 \subsection{Komunikace s Rohlíkem a Košíkem}
-Nejdříve jsem se rozhodl kontaktovat Rohlík. Po pár vyměněných e-mailech jsem obdržel celou dokumentaci k jejich API,
-které nám otevřelo spoutu možností i do budoucna. Například bychom mohli sledovat, jaké suroviny jsou právě ve slevě a
-podle toho doporučovat jídla.
 
+\subsubsection{Rohlík}
+Nejdříve jsem se rozhodl kontaktovat Rohlík. Po pár vyměněných e-mailech jsem obdržel celou dokumentaci k jejich API,
+které nám otevřelo spoutu možností i do budoucna. Například bych mohl sledovat, jaké suroviny jsou právě ve slevě a
+podle toho doporučovat jídla. Toto API je primárně používané přímo Rohlíkem pro jejich mobilní aplikaci. Avšak jsem se
+dozvěděl, že mají již ve vývoji rozhraní určené přímo pro partnery, ale zatím nevědí, kdy bude dostupné.
+
+\subsubsection{Košík}
 Od Košíku jsme dostali pozvání na schůzku, kde jsme si mohli prohlédnout i jejich kanceláře. Na schůzce jsme hned na začátku
-zjistili, že API pro partnery narozdíl od Rohlíku ještě dostupné není (Rohlík na API pro partnery také teprve pracuje,
-ale zatím jsme dostali přístup k API pro jejich aplikaci), ale už na něm pracují. Plánované období vydání je
-první kvartál roku 2022. Pro jeho využití je však potřeba OAuth server, který zatím není dostupný. % TODO: Zjistit v lednu.
+zjistili, že žádné API narozdíl od Rohlíku ještě dostupné není, ale už na něm pracují. Plánované období vydání je
+první kvartál roku 2022. Pro jeho využití je však potřeba OAuth server, který zatím není dostupný.
+
 Jako alternativu jsme dohromady vymysleli link na přidání surovin přímo do košíku, ze kterého nakonec sešlo, protože jsme
 poté objevili funkci \uv{Nákupní lístek}, kterou bychom mohli využít. Odeslali bychom seznam surovin a uživatel by si je poté
 mohl vybrat přímo z nabídky na Košíku. Nakonec jsme zjistili, že by se Košíku hodilo rozrůst sbírku receptů a bylo by možné
-pro uživatele naší aplikace nabínout jejich recepty Košíku, který by je následně odkoupil.
+pro uživatele naší aplikace nabínout jejich recepty Košíku, který by je následně odkoupil. % TODO: Obrázek
+
+\subsubsection{Závěr}
+Moje hlavní zaměření v této práci je na \emph{frontend}. Tudíž jsem se zaměřil na pohodlí, design a použitelnost pro uživatele
+a rozšířené funkce jsem pouze zanalyzoval. Na \emph{backendu} jsem se zaměřil pouze na funkční strukturu dat a jeho rozšiřitelnost
+v budoucnu, až bude potřeba tyto funkce, jako je například objednávání surovin, implementovat.
+
