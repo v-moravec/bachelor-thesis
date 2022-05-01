@@ -252,22 +252,37 @@ aktualizovat časovou značku při každé manipulaci s autorizací.
     \begin{minted}{js}
     async getData () {
       if(!lastUpdated || !expirationDate) {
-        // Download everything from server and add timestamps to localStorage.
+        // Download everything from server and add timestamps
+        // to localStorage.
         addTimestamps()
-        Store.dispatch("getData", { source: FirestoreSource.SERVER, updateOnly: false })
+        Store.dispatch("getData", {
+            source: FirestoreSource.SERVER,
+            updateOnly: false
+        })
         return
       }
 
       if(Date.now() > expirationDate) {
-        // Download everything from server and add timestamps to localStorage.
+        // Download everything from server and add timestamps
+        // to localStorage.
         addTimestamps()
-        Store.dispatch("getData", { source: FirestoreSource.SERVER, updateOnly: false })
+        Store.dispatch("getData", {
+            source: FirestoreSource.SERVER,
+            updateOnly: false
+        })
       }
       else {
-        // Get data from cache, call query to update new data and set last updated timestamp.
+        // Get data from cache, call query to update new data
+        // and set last updated timestamp.
         localStorage.lastUpdated = Date.now()
-        await Store.dispatch("getData", { source: FirestoreSource.CACHE, updateOnly: false })
-        await Store.dispatch("getData", { source: FirestoreSource.SERVER, updateOnly: true })
+        await Store.dispatch("getData", {
+            source: FirestoreSource.CACHE,
+            updateOnly: false
+        })
+        await Store.dispatch("getData", {
+            source: FirestoreSource.SERVER,
+            updateOnly: true
+        })
       }
     }
     \end{minted}

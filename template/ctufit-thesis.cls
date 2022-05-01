@@ -78,7 +78,7 @@
  %\definecolor{decoration}{RGB}{0, 0, 0} %CTU blue
  %\definecolor{heading}{RGB}{0, 122, 195}
  %\definecolor{headbackgroundgray}{RGB}{211,211,211} %light blue
- %\definecolor{backgroundgray}{RGB}{211,211,211} %CTU light blue
+  \definecolor{backgroundgray}{RGB}{211,211,211} %CTU light blue
  %\definecolor{headgray}{rgb}{0.50,0.50,0.51}
  %\definecolor{enumgray}{RGB}{0, 0, 0} %CTU blue
 % colors end
@@ -485,10 +485,11 @@
 				frame=single,framerule=0pt,xleftmargin=\fboxsep,xrightmargin=\fboxsep}%
 	}{}%
 	\@ifpackageloaded{minted}{%
+        \AtBeginEnvironment {minted} { \singlespacing \fontsize{11}{11} \selectfont }
 		\DeclareRobustCommand{\listingscaption}{\thectufitlistinglabel}%
 		\DeclareRobustCommand{\listoflistingscaption}{\thectufitlollabel}%
-		\usemintedstyle{bw}%
-		\setminted{bgcolor=backgroundgray}%
+		\usemintedstyle{vs}%
+		\setminted{bgcolor={}, frame=lines, linenos, framesep=2mm}%
 		\setmintedinline{bgcolor={}}
 	}{}%
 }
