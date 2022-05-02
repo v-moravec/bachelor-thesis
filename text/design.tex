@@ -92,3 +92,14 @@ by se další. S tímto řešením ale nastal problém, protože jsem spoléhal 
 Zvolil jsem tedy vyhledávání na frontendu, k čemuž je ale potřeba mít všechna data již při startu aplikace. Začal jsem tedy
 zkoumat, zda je možné využít cachování a tím zefektivnit čtení z databáze. \emph{Firestore} poskytuje cache již v základu~\cite{FirestoreCache} a bylo
 tedy potřeba ji pouze aktivovat. Dále přiblížím jak s touto funkcí pracovat v kapitole Implementace.
+
+\section{Přidávání surovin přímo v receptu}
+Při sběru požadavků jsme narazili s vedoucím na funkci, která by pomohla uživatelům přidávat suroviny přímo do kroků receptu.
+Fungovalo by to na principu označování lidí na Facebooku nebo jakékoliv jiné sociální síti. Tedy uživatel by napsal znak \uv{@}
+a objevil by se box se seznamem surovin, které jsou v aplikaci dostupné. V boxu by bylo také možné zadat počet. Tyto informace
+by se pak automaticky zobrazily i v listu surovin.
+
+\begin{figure}[H]
+    \includegraphics[width=\textwidth]{pdf/adobexd/suroviny-v-textu}
+    \caption{Přidání suroviny v popisu kroku receptu} \label{picture:recipeo:suroviny-v-textu}
+\end{figure}

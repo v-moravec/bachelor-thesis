@@ -33,7 +33,7 @@ Je velmi pohodlné, když se při změně kódu automaticky nahraje nová verze 
 při zakládání projektu a po celou dobu vývoje, jsem měl do pár minut po nahrání dostupnou verzi pro testování odkudkoliv.
 
 Při \mintinline{console}|firebase init| se vytvoří \emph{yml} soubory v složce \emph{.github}. Díky těmto souborům se pak při
-\emph{pull requestu} nebo \emph{merge} spustí proces, který sestaví aplikaci a výsledný \emph{build} nahraje na \emph{Firebase Hosting}~\cite{FirebaseHosting}.
+\emph{pull requestu} nebo \emph{merge} spustí proces, který sestaví aplikaci a výsledný \emph{build} nahraje na \emph{Firebase Hosting}~\cite{FirebaseDeploy}.
 Tyto soubory jsem musel doplnit o zápis do souboru, který vytvoří konfigurační soubor \emph{firebaseConfig.js}. V tomto souboru jsou citlivé klíče, které je lepší
 uchovávat mimo repozitář nebo právě pomocí \emph{secrets}. To funguje tak, že si je již žádný uživatel nemůže zobrazit, ale bot který sestaví aplikaci, k nim
 přístup má.
