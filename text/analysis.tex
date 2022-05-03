@@ -195,18 +195,20 @@ Zdá se tedy, že Jíme zdravě je nejblíže k aplikaci, kterou se snažím vyt
 Existující řešení na vyhledávání receptů nabízejí pouze veřejné recepty a mají spoustu reklam. Moje řešení bude poskytovat
 možnost soukromé sbírky receptů a jejich sdílení s vybranými uživateli či pomocí odkazu.
 
-Sestavil jsem tabulku s hodnocením od jedné do pěti, stejné jako se používá ve škole\footnote{Hodnocení recipeo.cz je na základě návrhu, ne podle výsledné verze.}.
+Sestavil jsem tabulku s hodnocením od jedné do pěti, stejné jako se používá ve škole\footnote{Hodnocení recipeo.cz je na základě návrhu, ne podle výsledné verze a u aplikace Jíme zdravě beru v potaz prémiovou verzi.}.
 Každý aspekt jsem ohodnotil pro všechny stránky, které jsem zahrnul v porovnání a přidal jsem skóre, které je v souladu s parametry mojí aplikace.
 
+\newcommand*\rot{\rotatebox{90}}
+
 \begin{table}[H]\centering
-    \caption{~Porovnání konkurenčních řešení}\label{tab:recipeo:konkurencni-reseni}
-    \begin{tabular}{l|c|c|c|c}
-        Typ		                & vareni.cz & toprecepty.cz & recepty.cz & recipeo.cz \tabularnewline \hline
-        Reklamy		            & 4		    & 2	            & 3          & 1          \tabularnewline \hline
-        Zobrazení receptu	    & 3		    & 2	            & 3          & 1          \tabularnewline \hline
-        Doporučování receptů	& 2		    & 2	            & 2          & 3          \tabularnewline \hline
-        Model sdílení	        & 4		    & 4	            & 4          & 2          \tabularnewline \hline
-        Zjednodušení nákupu	    & 4		    & 3	            & 2          & 1          \tabularnewline
+\caption{~Porovnání konkurenčních řešení}\label{tab:recipeo:konkurencni-reseni}
+    \begin{tabular}{l|c|c|c|c|c|c}
+        Typ		                & \rot{vareni.cz}   & \rot{toprecepty.cz}   & \rot{recepty.cz}  & \rot{vareni.cz (Aplikace)}  & \rot{Jíme Zdravě}  & \rot{recipeo.cz}  \tabularnewline \hline
+        Reklamy		            & 4		            & 2	                    & 3                 & 1                           & 3                  & 1                 \tabularnewline \hline
+        Zobrazení receptu	    & 3		            & 2	                    & 3                 & 1                           & 1                  & 1                 \tabularnewline \hline
+        Doporučování receptů	& 2		            & 2	                    & 2                 & 5                           & 2                  & 3                 \tabularnewline \hline
+        Model sdílení	        & 4		            & 4	                    & 4                 & 5                           & 3                  & 2                 \tabularnewline \hline
+        Zjednodušení nákupu	    & 4		            & 3	                    & 2                 & 5                           & 1                  & 1                 \tabularnewline
     \end{tabular}
 \end{table}
 
@@ -232,7 +234,7 @@ první kvartál roku 2022. Pro jeho využití je však potřeba OAuth server, kt
 Jako alternativu jsme dohromady vymysleli link na přidání surovin přímo do košíku, ze kterého nakonec sešlo, protože jsme
 poté objevili funkci \uv{Nákupní lístek}, kterou bychom mohli využít. Odeslali bychom seznam surovin a uživatel by si je poté
 mohl vybrat přímo z nabídky na Košíku. Nakonec jsme zjistili, že by se Košíku hodilo rozrůst sbírku receptů a bylo by možné
-pro uživatele naší aplikace nabínout jejich recepty Košíku, který by je následně odkoupil. % TODO: Obrázek
+pro uživatele naší aplikace nabínout jejich recepty Košíku, který by je následně odkoupil.
 
 \begin{figure}[H]
     \includegraphics[width=\textwidth]{images/kosik-nakupni-listek}

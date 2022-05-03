@@ -489,7 +489,7 @@
 		\DeclareRobustCommand{\listingscaption}{\thectufitlistinglabel}%
 		\DeclareRobustCommand{\listoflistingscaption}{\thectufitlollabel}%
 		\usemintedstyle{vs}%
-		\setminted{bgcolor={}, frame=lines, linenos, framesep=2mm}%
+		\setminted{bgcolor={}, frame=lines, linenos, breaklines, framesep=2mm}%
 		\setmintedinline{bgcolor={}}
 	}{}%
 }

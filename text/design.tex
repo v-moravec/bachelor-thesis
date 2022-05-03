@@ -19,7 +19,9 @@ pro více typů obrazovek. Začal jsem vytvářením úvodní obrazovky, na kter
 aplikace, vyhledávání a logo. Tato stránka by měla být přehledná a čistá, proto jsem zvolil ikonky, které vystihují dané
 odkazy. Díky tomu se při zobrazení na mobilu se tak mohou skrýt pomocné texty.
 
-\begin{figure}[H]
+\newpage
+
+\begin{figure}
     \includegraphics[width=\textwidth]{images/main-page}
     \caption{Hlavní obrazovka} \label{picture:recipeo:main-page}
 \end{figure}
@@ -77,6 +79,52 @@ dokumentovou databázi.
     \includegraphics[width=\textwidth]{images/firestore-structure}
     \caption{Struktura dat ve Firestore} \label{picture:recipeo:firestore-structure}
 \end{figure}
+
+%\begin{figure}
+%    \dirtree{%
+%        .1 groups.
+%        .2 549xtKNBFuPVmv26q7wD.
+%        .3 name.
+%        .3 userIds.
+%        .3 recipes.
+%        .4 createdAt.
+%        .4 images.
+%        .4 ingredients.
+%        .4 name.
+%        .4 portions.
+%        .4 steps.
+%        .4 tags.
+%        .4 updatedAt.
+%        .4 visibility.
+%        .1 ingredients.
+%        .2 0VH5qcTe2IVhmJmz7EGV.
+%        .3 createdAt.
+%        .3 image.
+%        .3 linkKosik.
+%        .3 linkRohlik.
+%        .3 name.
+%        .3 tags.
+%        .3 updatedAt.
+%        .1 tags.
+%        .2 9IazgyL3qkl69g04M9fC.
+%        .3 createdAt.
+%        .3 name.
+%        .3 updatedAt.
+%        .1 users.
+%        .2 0DT14MBeP9UmSGhyNg9Wriv2aW22.
+%        .3 recipes.
+%        .4 createdAt.
+%        .4 images.
+%        .4 ingredients.
+%        .4 name.
+%        .4 portions.
+%        .4 steps.
+%        .4 tags.
+%        .4 updatedAt.
+%        .4 visibility.
+%    }
+%    \caption{Adresářová struktura} \label{fig:struktura}
+%\end{figure}
 
 \section{Uložiště ve Firebase}
 Firebase poskytuje i vlastní uložiště dat pod názvem \emph{Cloud Storage}~\cite{CloudStorage}. Zde je potřeba ukládat externí obrázky, které uživatelé
