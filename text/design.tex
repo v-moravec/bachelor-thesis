@@ -7,7 +7,13 @@
 
 Při navrhování aplikace se většinou začíná s takzvanými wireframy. Wireframe je rozložení prvků aplikace, které ještě
 nemají žádný vzhled. Jsou to například tlačítka, sekce pro různý obsah atd. Já jsem zvolil lehce odlišný přístup, tedy
-vytvoření wireframu již s designem. K této tvorbě jsem použil nástroj Adobe XD~\cite{AdobeXD}.
+vytvoření wireframu již s designem. K této tvorbě jsem použil nástroj Adobe XD~\cite{AdobeXD}. Jako úplně první jsem ale vytvořil
+ruční náčrty, abych měl představu jak postupovat.
+
+\begin{figure}[H]
+    \includegraphics[width=\textwidth]{pdf/navrh-rucni}
+    \caption{Ruční náčrt obrazovek} \label{picture:recipeo:hand-drawn-design}
+\end{figure}
 
 U vzhledu jsem se inspiroval moderními operačními systémy jako např. Windows 11~\cite{Windows11}, One UI~\cite{OneUI}
 (nadstavba Android od společnosti Samsung) atd.
@@ -18,8 +24,6 @@ Již od počátku jsem bral v potaz rozdíly mezi zobrazením na mobilu a počí
 pro více typů obrazovek. Začal jsem vytvářením úvodní obrazovky, na které se zobrazí rychlé odkazy na nejdůležitější části
 aplikace, vyhledávání a logo. Tato stránka by měla být přehledná a čistá, proto jsem zvolil ikonky, které vystihují dané
 odkazy. Díky tomu se při zobrazení na mobilu se tak mohou skrýt pomocné texty.
-
-\newpage
 
 \begin{figure}
     \includegraphics[width=\textwidth]{images/main-page}
@@ -65,18 +69,12 @@ které se použije v aplikaci. Návrhů bylo celkem šest a na Slacku~\cite{Slac
 \section{Databáze ve Firebase}
 Jak jsem již zmínil v kapitole 4, \emph{Firestore} je databáze ve službě \emph{Firebase}. Vytvořil jsem doménový model, který jsem ale poté musel přetransformoval pro
 dokumentovou databázi.
-
-\subsection{Doménový model}
-% TODO: Přidat upravený obrázek
 \begin{figure}[h]
-    \includegraphics[width=\textwidth]{images/domain-model}
+    \includegraphics[width=\textwidth]{pdf/domain-model}
     \caption{Doménový model} \label{picture:recipeo:domain-model}
 \end{figure}
-
-\subsection{Schéma v dokumentové databázi}
-% TODO: Přidat upravený obrázek
 \begin{figure}[H]
-    \includegraphics[width=\textwidth]{images/firestore-structure}
+    \includegraphics[width=\textwidth]{pdf/navrh-firestore}
     \caption{Struktura dat ve Firestore} \label{picture:recipeo:firestore-structure}
 \end{figure}
 
