@@ -5,39 +5,39 @@
 
 Vaření se týká spousty lidí. Mladší generace k tomu používá recepty, které jsou dostupné na internetu. Recepty, které najdou
 a které se jim osvědčí, jsou často na jiných stránkách a správa těchto receptů se stává nereálná. Na druhou stranu na nejznámějších
-portálech není možné si recepty ukládat soukromně a tak spoustu starších lidí nevyužije možnosti digitalizace jejich receptů.
+portálech není možné si recepty ukládat soukromě a tak spousta starších lidí nevyužije možnosti digitalizace jejich receptů.
 Většina z nich si totiž uchovává své recepty napsané na listech papíru, což ale v dnešní době již není praktické řešení. Už jen kvůli
 sdílení receptu s někým, kdo si ho vyžádá, což je celkem běžná záležitost.
 
-Výsledek této práce bude moci použít široká veřejnost -- každý kdo vaří podle receptů. Aplikace jim pomůže s jednoduchým
-zadání receptů do sbírky, kde mohou mít všechny recepty na jednom místě. Dále budou moci uživatelé využít plánovače, kam
+Výsledek této práce bude moci použít široká veřejnost -- každý, kdo vaří podle receptů. Aplikace jim pomůže s jednoduchým
+zadáním receptů do sbírky, kde mohou mít všechny recepty na jednom místě. Dále budou moci uživatelé využít plánovače, kam
 lze zanést již přidané recepty či počet porcí. Pokud nejsou zvyklí plánovat a spíše řeší věci na poslední chvíli, bude
 pro ně připraven rychlý návrh receptu. V neposlední řadě bude jednoduché své recepty sdílet s ostatními uživateli.
 
 V práci popisuji proces vývoje webové aplikace od analýzy přes návrh až po implementaci. Zaměřím se hlavně na frontend v
-javascriptovém frameworku Vue.js, ale provedu čtenáře i backendovou částí, která je tvořena pomocí nástrojem Firebase od
+javascriptovém frameworku Vue.js, ale provedu čtenáře i backendovou částí, která je tvořena pomocí nástroje Firebase od
 společnosti Google. Začnu sběrem informací od potencionálních uživatelů, pomocí kterých sestavím funkční a nefunkční požadavky.
 Poté zanalyzuji konkurenční řešení a popíšu jejich plusy či nevýhody. Poté představím technologie, které jsem si vybral pro
 vývoj. Dále navrhnu uživatelské rozhraní, grafické prvky či datovou strukturu aplikace. Na základě předchozích kapitol implementuji
 aplikaci a zmíním problémy, se kterými jsem se při vývoji setkal. Sestavím test pro uživatele a zhodnotím jeho výsledky.
-Na závěr zmíním funkce které jsem nestihl implementovat či rozšíření, která by se v budoucnosti hodila.
+Na závěr zmíním funkce, které jsem nestihl implementovat, či rozšíření, která by se v budoucnosti mohla hodit.
 
 \chapter{Cíl}
 Cílem této bakalářské práce je vytvořit prototyp webové aplikace pro správu receptů. Dále je nutné prozkoumat možnosti
 zjednodušení nákupu surovin či plánování vaření jídel.
 
 Nejdříve zanalyzuji potřeby potenciálních uživatelů, kde se pokusím zjistit, které všechny funkce by ocenili. Poté se
-zaměřím na existující řešení, která porovnám s mým řešením a popíšu vylepšení. Dále vytvořím návrh designu aplikace -- wireframy,
+zaměřím na existující řešení, která porovnám s mým řešením, a popíšu vylepšení. Dále vytvořím návrh designu aplikace -- wireframy,
 které zároveň zachycují, jak aplikace vypadá. Důraz kladu na rozdíly mezi použitím na mobilu a počítači. Také se snažím, aby
-aplikace vypadala co nejmoderněji a působila jako nativní, tedy jako taková, kterou by si uživatel nainstaloval přímo do jeho systému.
+aplikace vypadala co nejmoderněji a působila jako nativní, tedy jako taková, kterou by si uživatel nainstaloval přímo do svého systému.
 
 Na základě analýzy a návrhu vyberu technologie, které použiji pro implementaci funkčního prototypu. Tyto technologie nejdříve představím
-a popíšu co se od nich dá očekávat. Na to navážu kapitolou o samotném psaní aplikace, kde popíšu zajímavé situace a problémy, které nastaly.
+a popíšu, co se od nich dá očekávat. Na to navážu kapitolou o samotném psaní aplikace, kde popíšu zajímavé situace a problémy, které nastaly.
 
-Na konec podrobím aplikaci uživatelskému testování, kde vysvětlím, jak by se takové testování mělo provádět a co všechno je pro to potřeba.
-Poté zhodnotím výsledky, které testování přinese a popíšu možnosti, o které se aplikace v budoucnu bude moci rozšířit.
+Nakonec podrobím aplikaci uživatelskému testování, kde vysvětlím, jak by se takové testování mělo provádět, a co všechno je pro to potřeba.
+Poté zhodnotím výsledky, které testování přinese, a popíšu možnosti, o které se aplikace v budoucnu bude moci rozšířit.
 
-Uživatelé, kteří se rozhodnou aplikaci používat by měli být schopni přidat recepty soukromě pro vlastní využití nebo veřejně,
-aby se mohl kdokoliv inspirovat. Dále budou mít možnost přidávat suroviny a kontrolovat jejich počet a v případě nutnosti si
-rychle objednat ty, které docházejí. K zjednodušení plánování budou moci využít plánovač a pokud to dělají neradi, ale naopak
-se často nemůžou rozhodnout co vařit, bude k dispozici rychlý návrh receptu.
+Uživatelé, kteří se rozhodnou aplikaci používat, by měli být schopni přidat recepty soukromě pro vlastní využití nebo veřejně,
+aby se mohl kdokoliv inspirovat. Dále budou mít možnost přidávat suroviny, kontrolovat jejich počet a v případě nutnosti si
+rychle objednat ty, které docházejí. K zjednodušení plánování budou moci využít plánovač. Pokud ale plánují neradi a naopak
+se často nemohou rozhodnout co vařit, bude k dispozici rychlý návrh receptu.
