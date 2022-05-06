@@ -5,10 +5,10 @@
 
 \section{Vzhled aplikace}
 
-Při navrhování aplikace se většinou začíná s takzvanými wireframy. Wireframe je rozložení prvků aplikace, které ještě
+Při navrhování aplikace se většinou začíná s takzvanými \emph{wireframy}. \emph{Wireframe} je rozložení prvků aplikace, které ještě
 nemají žádný vzhled. Jsou to například tlačítka, sekce pro různý obsah atd. Já jsem zvolil lehce odlišný přístup, tedy
-vytvoření wireframu již s designem. K této tvorbě jsem použil nástroj Adobe XD~\cite{AdobeXD}. Jako úplně první jsem ale vytvořil
-ruční náčrty, abych měl představu, jak postupovat.
+vytvoření \emph{wireframu} již s designem. K této tvorbě jsem použil nástroj Adobe XD~\cite{AdobeXD}. Jako úplně první jsem ale vytvořil
+ruční náčrty~\ref{picture:recipeo:hand-drawn-design}, abych měl představu, jak postupovat.
 
 \begin{figure}[H]
     \includegraphics[width=\textwidth]{pdf/navrh-rucni}
@@ -21,8 +21,8 @@ Chtěl jsem dosáhnout jednoduchého, přehledného designu, který bude pro už
 propracoval přes několik verzí a ve výsledku jsem zvolil průhledný styl podkladu komponent s \emph{mesh gradientem}~\cite{MeshGradients} na pozadí.
 
 Již od počátku jsem bral v potaz rozdíly mezi zobrazením na mobilu a počítači, díky čemuž jsem mohl design uzpůsobit
-pro více typů obrazovek. Začal jsem vytvářením úvodní obrazovky, na které se zobrazí rychlé odkazy na nejdůležitější části
-aplikace, vyhledávání a logo. Tato stránka by měla být přehledná a čistá, proto jsem zvolil ikonky, které vystihují dané
+pro více typů obrazovek. Začal jsem vytvářením úvodní obrazovky~\ref{picture:recipeo:main-page}, na které se zobrazí rychlé odkazy na nejdůležitější části
+aplikace, vyhledávání a logo~\ref{picture:recipeo:logo-final}. Tato stránka by měla být přehledná a čistá, proto jsem zvolil ikonky, které vystihují dané
 odkazy. Díky tomu se při zobrazení na mobilu tak mohou skrýt pomocné texty.
 
 \begin{figure}
@@ -51,7 +51,7 @@ Pro aplikaci bylo potřeba vybrat název a logo. Vzhledem k tomu, že středem v
 Poté jsem založil nový soubor ve Photoshopu a pustil se do vytváření loga. Chtěl jsem vytvořit jedno s celým názvem, které bychom použili
 na úvodní stránce, a jedno menší, které by se dalo využít jako ikona aplikace, favicon atd.
 
-Zvolil jsem několik fontů z Adobe Fonts~\cite{AdobeFonts} a vytvořil návrhy. Menší logo jsem se rozhodl udělat jako první písmeno názvu na pozadí,
+Zvolil jsem několik fontů z Adobe Fonts~\cite{AdobeFonts} a vytvořil návrhy~\ref{picture:recipeo:logos}. Menší logo jsem se rozhodl udělat jako první písmeno názvu na pozadí,
 které se použije v aplikaci. Návrhů bylo celkem šest a na Slacku~\cite{Slack}, který jsme využívali pro komunikaci, jsme hlasovali, které je nejlepší.
 
 \begin{figure}[h]
@@ -64,11 +64,12 @@ které se použije v aplikaci. Návrhů bylo celkem šest a na Slacku~\cite{Slac
     \hfill
     \subfloat[Výsledné logo]{\includegraphics[width=0.2\textwidth]{images/logo-final}\label{picture:recipeo:logo-final}}
     \caption{Vývoj loga}
+    \label{picture:recipeo:logos}
 \end{figure}
 
 \section{Databáze ve Firebase}
-Jak jsem již zmínil v kapitole 4, \emph{Firestore} je databáze ve službě \emph{Firebase}. Vytvořil jsem doménový model, který jsem ale poté musel přetransformovat pro
-dokumentovou databázi.
+Jak jsem již zmínil v kapitole~\ref{chap:technologie}, \emph{Firestore} je databáze ve službě \emph{Firebase}. Vytvořil jsem doménový model~\ref{picture:recipeo:domain-model}, který jsem ale poté musel přetransformovat pro
+dokumentovou databázi~\ref{picture:recipeo:firestore-structure}.
 \begin{figure}[h]
     \includegraphics[width=\textwidth]{pdf/domain-model}
     \caption{Doménový model} \label{picture:recipeo:domain-model}
@@ -77,52 +78,6 @@ dokumentovou databázi.
     \includegraphics[width=\textwidth]{pdf/navrh-firestore}
     \caption{Struktura dat ve Firestore} \label{picture:recipeo:firestore-structure}
 \end{figure}
-
-%\begin{figure}
-%    \dirtree{%
-%        .1 groups.
-%        .2 549xtKNBFuPVmv26q7wD.
-%        .3 name.
-%        .3 userIds.
-%        .3 recipes.
-%        .4 createdAt.
-%        .4 images.
-%        .4 ingredients.
-%        .4 name.
-%        .4 portions.
-%        .4 steps.
-%        .4 tags.
-%        .4 updatedAt.
-%        .4 visibility.
-%        .1 ingredients.
-%        .2 0VH5qcTe2IVhmJmz7EGV.
-%        .3 createdAt.
-%        .3 image.
-%        .3 linkKosik.
-%        .3 linkRohlik.
-%        .3 name.
-%        .3 tags.
-%        .3 updatedAt.
-%        .1 tags.
-%        .2 9IazgyL3qkl69g04M9fC.
-%        .3 createdAt.
-%        .3 name.
-%        .3 updatedAt.
-%        .1 users.
-%        .2 0DT14MBeP9UmSGhyNg9Wriv2aW22.
-%        .3 recipes.
-%        .4 createdAt.
-%        .4 images.
-%        .4 ingredients.
-%        .4 name.
-%        .4 portions.
-%        .4 steps.
-%        .4 tags.
-%        .4 updatedAt.
-%        .4 visibility.
-%    }
-%    \caption{Adresářová struktura} \label{fig:struktura}
-%\end{figure}
 
 \section{Úložiště ve Firebase}
 Firebase poskytuje i vlastní úložiště dat pod názvem \emph{Cloud Storage}~\cite{CloudStorage}. Zde je potřeba ukládat externí obrázky, které uživatelé

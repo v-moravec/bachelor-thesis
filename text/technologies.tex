@@ -2,6 +2,7 @@
 %! Date = 21.10.2021
 
 \chapter{Technologie}
+\label{chap:technologie}
 
 \section{Výběr}
 Vzhledem k tomu, že aplikace byla původně zamýšlena jako osobní projekt, který by si následně spravoval sám vedoucí, a já
@@ -19,7 +20,8 @@ Musel jsem tak ponížit verze všech závislostí a přejít na verzi 2.
 Vuetify je knihovna implementující různé komponenty, které je možné použít při tvorbě uživatelského rozhraní. Kromě toho
 usnadňuje práci s rozložením na stránce, přizpůsobením barevného tématu, ikonami atd. Další výhodou jsou týdenní aktualizace
 momentální verze, které přidávají nové funkce a opravují nalezené chyby.\cite{VuetifyWhy}
-Bohužel tato knihovna nebyla v době vývoje plně dokončena a byla pouze v alpha verzi, tudíž spoustu věcí nefungovalo, jak by mělo.
+Bohužel tato knihovna nebyla v době vývoje plně dokončena a byla pouze v alpha verzi (pro Vue 3), tudíž spoustu věcí nefungovalo, jak by mělo.
+Verze pro Vue 2 byla plně funkční, a tak jsem zvolil tuto variantu.
 
 \section{Vuex}
 Knihovna Vuex~\cite{Vuex} se využívá pro uložení stavu aplikace. Je vhodné ji použít u dat, která jsou využívána na více místech a jejich
@@ -28,7 +30,7 @@ předávání skrz komponenty by bylo jinak složité.
 Změna či přístup ke stavu a všechny operace nad ním se řeší ve speciálním souboru, kde se Vuex inicializuje. K těmto operacím využijeme \emph{state, mutations, getters, actions a modules}.
 \emph{State} označuje strukturu dat, tedy pokud potřebuji nějak zaznamenávat recepty, vytvořím zde pole či objekt a s ním dále pracuji. Pro to, abych přidal recept, využiji \emph{actions} v kombinaci s
 \emph{mutations}. \emph{Actions} je obal funkcí, které můžu zavolat odkudkoliv z aplikace a ty provedou nějakou změnu nad daty. Například data stáhnou, aktualizují nebo nastaví hodnotu, kterou uživatel
-zadá. Mutations poté vyvoláme pomocí funkce \mintinline{js}|commit|. Té předáme název mutace, která se má zavolat a tzv. \emph{payload}, tedy data, která chceme do stavu zapsat. Mutace již poté pouze zapíše
+zadá. \emph{Mutations} poté vyvoláme pomocí funkce \mintinline{js}|commit|. Té předáme název mutace, která se má zavolat a tzv. \emph{payload}, tedy data, která chceme do stavu zapsat. Mutace již poté pouze zapíše
 do stavu a nic dalšího by řešit neměla.
 
 Pro získání stavu lze využít \emph{getters}. V těchto funkcích by také neměla být žádná další logika, ačkoliv se zde dá vytvořit drobné filtrování či řazení.
@@ -73,7 +75,7 @@ Ten nabízí rychlé SSD disky, na kterých web běží, SSL certifikáty pro vl
 aplikace předtím než je nasazena na produkci.~\cite{FirebaseHosting}
 
 \subsection{Functions}
-Firebase Cloud Functions mají za úkol vývojářům ulehčit vývoj backendu tak, aby nemuseli řešit záležitosti okolo správy serverů.
+\emph{Firebase Cloud Functions} mají za úkol vývojářům ulehčit vývoj backendu tak, aby nemuseli řešit záležitosti okolo správy serverů.
 Funkce, které na tomto systému běží, mohou reagovat na širokou škálu událostí uvnitř Firebase produktů. Například, pokud se do aplikace
 přihlásí nový uživatel, může se spustit funkce, která mu odešle uvítací email. Jako programovací jazyk se pro psaní funkcí použivá Node.js.~\cite{FirebaseFunctions}
 

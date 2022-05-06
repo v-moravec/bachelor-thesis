@@ -19,7 +19,7 @@ Nejdříve jsem založil projekt ve \emph{Firebase}. Stačí se přihlásit, ote
 Poté se zadá název, popřípadě se projde konfigurací \emph{Google Analytics}. Rovnou jsem přešel na \emph{Blaze plan}~\cite{FirebasePricing}, díky kterému
 se otevřelo více možností. Je ale potřeba si kontrolovat, že aplikace nepřesáhne žádné limity~\cite{FirebaseLimits}, jinak se strhne
 částka ze zadané platební karty. To se dá dělat buď manuálně nebo stanovit \emph{budget}, který aplikace nesmí za měsíc přesáhnout.
-Po vyčerpání poloviny tohoto limitu přijde upozornění na email správce aplikace~\cite{FirebaseBudget}.
+Po vyčerpání poloviny tohoto rozpočtu přijde upozornění na email správce aplikace~\cite{FirebaseBudget}.
 
 Po založení se do projektu přidá aplikace. Díky tomu \emph{Firebase} vygeneruje kód, který se musí do aplikace přidat.
 Pomocí \mintinline{console}|npm install firebase| se do projektu přidá potřebný balíček. Poté je potřeba přidat vygenerovaný
@@ -33,7 +33,7 @@ Je velmi pohodlné, když se při změně kódu automaticky nahraje nová verze 
 při zakládání projektu a po celou dobu vývoje jsem měl do pár minut po nahrání dostupnou verzi pro testování odkudkoliv.
 
 Při \mintinline{console}|firebase init| se vytvoří \emph{yml} soubory ve složce \emph{.github}. Díky těmto souborům se pak při
-\emph{pull requestu} nebo \emph{merge} spustí proces, který sestaví aplikaci a výsledný \emph{build} nahraje na \emph{Firebase Hosting}~\cite{FirebaseDeploy}.
+\emph{pull requestu} nebo \emph{push} spustí proces, který sestaví aplikaci a výsledný \emph{build} nahraje na \emph{Firebase Hosting}~\cite{FirebaseDeploy}.
 Tyto soubory jsem musel doplnit o zápis do souboru, který vytvoří konfigurační soubor \emph{firebaseConfig.js}. V tomto souboru jsou citlivé klíče, které je lepší
 uchovávat mimo repozitář nebo právě pomocí \emph{secrets}. To funguje tak, že si je již žádný uživatel nemůže zobrazit, ale bot, který sestaví aplikaci, k nim
 přístup má.
@@ -173,7 +173,7 @@ jsem díky tomu nemusel kontrolovat, zda recept s daným \emph{id} existuje, kdy
 daty.
 
 \section{PWA}
-Co se týče \emph{PWA}, změnil jsem v konfiguračním souboru název a tématickou barvu. Poté jsem přidal komponentu pro aktualizaci aplikace.
+Co se týče PWA, změnil jsem v konfiguračním souboru název a tématickou barvu. Poté jsem přidal komponentu pro aktualizaci aplikace.
 Uživateli se zobrazí, když je na server nahrána nová verze. Uživatel poté klikne na tlačítko \emph{Obnovit} a aplikace se spustí s novou verzí.
 Tento dialog se mi nejdříve nedařilo správně zobrazovat, protože jsem posílal špatný typ zprávy pro \emph{service workera}. Místo objektu s
 klíčem \emph{type} jsem posílal pouze string se zprávou~\cite{PWAServiceWorker}.
