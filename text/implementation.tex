@@ -68,7 +68,7 @@ přístup má.
 Vytvoření složek a základní rozdělení jsem ponechal na \emph{vue ui}. Konfigurační soubory se nachází v \emph{rootu} projektu, implementace
 je poté rozdělena podle zaměření ve složce \textbf{src}. Dále se při přidání \emph{Firebase Functions} objevila složka \textbf{functions}, která
 obsahuje kód, který se nahrává na server a dá se poté využít jako jednoduché API. Složka \textbf{public} obsahuje základní soubory, jako je \textbf{index.html},
-do kterého se při přístupu na stránku vloží JavaScriptový kód nebo různé ikony, jako je logo. Pro výsledný \emph{build}, který se nahraje na Firebase hosting se
+do kterého se při přístupu na stránku vloží JavaScriptový kód nebo různé ikony, jako je logo. Pro výsledný \emph{build}, který se nahraje na \emph{Firebase hosting} se
 používá složka \textbf{dist}.
 
 \begin{figure}
@@ -198,7 +198,7 @@ kterému je možné změnit barvu. Pro prvky mimo Vuetify je možné využít CS
 
 \section{Firebase}
 
-Knihovnu Firebase jsem již představil v předchozích kapitolách. V této sekci popíšu, jak knihovnu používat.
+Knihovnu \emph{Firebase} jsem již představil v předchozích kapitolách. V této sekci popíšu, jak knihovnu používat.
 
 \subsection{Firebase Auth}
 \emph{Firebase} dokáže řešit i přihlášení uživatele. Nejprve jsem chtěl mít dva způsoby přihlášení, přes email a heslo a přes
@@ -255,7 +255,7 @@ Základní spuštění je velmi jednoduché, stačí zavolat importovanou metodu
     \end{minted}
 \end{listing}
 
-Jako parametr je potřeba předat instanci Firestore, kterou lze získat s parametrem pro neomezenou velikost, tím pádem se nebudou
+Jako parametr je potřeba předat instanci \emph{Firestore}, kterou lze získat s parametrem pro neomezenou velikost, tím pádem se nebudou
 mazat záznamy kvůli úspoře místa. Je také nutné přidat parametr \emph{forceOwnership}, protože jinak se cache rozbije při více
 otevřených záložkách se stejnou aplikací~\cite{FirebaseMultipleTabs}.
 
@@ -318,9 +318,9 @@ aktualizovat časovou značku při každé manipulaci s autorizací.
 \newpage
 
 \subsection{Firestore rules}
-Bezpečnost je důležitá součást jakéhokoliv softwaru. Firebase proto nabízí takzvané Firestore Rules pro zabezpečení dat na serveru.
+Bezpečnost je důležitá součást jakéhokoliv softwaru. \emph{Firebase} proto nabízí takzvané \emph{Firestore Rules} pro zabezpečení dat na serveru.
 Díky těmto pravidlům je možné filtrovat požadavky a v případě nutnosti zamítnout přístup k datům. Zvolil jsem pravidla na základě
-indentifikace pomocí \emph{uid} neboli uživatelského identifikátoru. Pravidla fungují tak, že se pomocí cesty ve Firestore vyhledá
+indentifikace pomocí \emph{uid} neboli uživatelského identifikátoru. Pravidla fungují tak, že se pomocí cesty ve \emph{Firestore} vyhledá
 pravidlo, a pokud je splněna podmínka, data se odešlou. Ve výchozím stavu jsou všechny zdroje privátní, tedy nikdo k nim nemá přístup.
 
 \begin{listing}[H]
@@ -350,7 +350,7 @@ zdroj, ze kterého chceme data dostat (nějaká kolekce), a nakonec určit, zda 
 \end{figure}
 
 \subsection{Firebase Functions}
-Cloudové funkce~\cite{FirebaseFunctions} jsem využil pro místa v aplikaci, kde nebylo možné pomocí Firestore Rules správně ošetřit bezpečnost dat.
+Cloudové funkce~\cite{FirebaseFunctions} jsem využil pro místa v aplikaci, kde nebylo možné pomocí \emph{Firestore Rules} správně ošetřit bezpečnost dat.
 Poprvé jsem napsal funkce, díky kterým se stáhnul určitý počet receptů, ke kterým měl uživatel přístup. Využil jsem stránkování,
 což znamená, že když uživatel přišel na stránku s recepty, stáhlo se pouze omezené množství, a až když bylo potřeba, aplikace požádala
 server o další. Díky tomu jsem nemusel vytvářet žádná pravidla, stačilo nechat celou databázi zamknutou, protože ve Functions se přistupuje

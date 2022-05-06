@@ -43,44 +43,44 @@ v angličtině a čestině, ale nakonec jsem se rozhodl, že prozatím dává ap
 je možné je využít.
 
 \section{Firebase}
-Firebase~\cite{Firebase} je platforma pro vývoj aplikací. Nabízí spoustu produktů, které je možné využít, a tím zjednodušit vývoj.
-Dané produkty mohou mezi sebou komunikovat a reagovat na různé události. Firebase poskytuje multiplatformní SDK, což znamená, že je
+\emph{Firebase}~\cite{Firebase} je platforma pro vývoj aplikací. Nabízí spoustu produktů, které je možné využít, a tím zjednodušit vývoj.
+Dané produkty mohou mezi sebou komunikovat a reagovat na různé události. \emph{Firebase} poskytuje multiplatformní SDK, což znamená, že je
 možné vyvíjet v několika programovacích jazycích, jako je Java, Kotlin, Swift, JavaScript nebo C++. V kombinaci s touto platformou je možné
 využít další nástroje od společnosti Google, jako jsou Analytics, Google Ads a další. K tomu lze přidat rozšíření, která vyžadují jen základní
 konfiguraci a propojí aplikaci s dalšími externími systémy, jako je Stripe~\cite{Stripe} či Algolia~\cite{Algolia}.
 
 \subsection{Ceny}
-Firebase má velikou výhodu v tom, že je zdarma, pokud uživatelé nevyčerpají určitý objem dat či přístupů k databázi. Tato kapacita se resetuje
+\emph{Firebase} má velikou výhodu v tom, že je zdarma, pokud uživatelé nevyčerpají určitý objem dat či přístupů k databázi. Tato kapacita se resetuje
 denně nebo měsíčně, podle toho, o jaký podsystém se jedná. V nabídce jsou dva plány. První \emph{Spark Plan} je úplně zadarmo, ale má určitá omezení.
-Na druhou stranu \emph{Blaze Plan} má stejné limity a platí se pouze za jejich překročení. Tedy například pro databázi Firestore je zdarma padesát tisíc
+Na druhou stranu \emph{Blaze Plan} má stejné limity a platí se pouze za jejich překročení. Tedy například pro databázi \emph{Firestore} je zdarma padesát tisíc
 čtení denně pro oba plány a pro \emph{Blaze Plan} poté stojí každých dalších sto tisíc čtení 1,40 Kč.~\cite{FirebasePricing}
 
 \subsection{Firestore}
-Cloud Firestore~\cite{Firestore} je NoSQL dokumentová databáze. Narozdíl od SQL databází, které se soustředí na snížení duplikace dat, se dokumentová
+\emph{Cloud Firestore}~\cite{Firestore} je NoSQL dokumentová databáze. Narozdíl od SQL databází, které se soustředí na snížení duplikace dat, se dokumentová
 databáze zaměruje na časté aktualizace a změny. Největší rozdíl mezi těmito typy je způsob uložení dat. SQL reprezentuje data pomocí
 tabulek s řádky a sloupci, dokumentová databáze má JSON dokumenty a jejich kolekce. To vede k flexibilnějšímu datovému modelu, rychlejším
 dotazům a lehčímu vývoji pro vývojáře.~\cite{MongoDBNoSQL}
 
-Firestore nabízí vlastní řešení bezpečnosti přes Firebase Rules, které více přiblížím v kapitole o implementaci pomocí ukázek.
+\emph{Firestore} nabízí vlastní řešení bezpečnosti přes \emph{Firebase Rules}, které více přiblížím v kapitole o implementaci pomocí ukázek.
 
 \subsection{Storage}
-Cloud Storage je uložiště, kam je možné ukládat různé soubory, které uživatelé potřebují při používání aplikace. V mém případě to
+\emph{Cloud Storage} je uložiště, kam je možné ukládat různé soubory, které uživatelé potřebují při používání aplikace. V mém případě to
 budou fotografie jídel či surovin. Pro ukládání dat se používají takzvané \emph{Cloud Storage buckets}, což jsou pouze kontejnery,
 které můžeme využít tak, aby data byla organizovaná~\cite{FirebaseBucket}. K tomu lze vytvořit vnitřní strukturu pomocí složek nebo
 data oddělit podle jejich provázanosti do různých kontejnerů.
 
 \subsection{Hosting}
-Webová aplikace musí být někde dostupná, aby k ní uživatelé mohli přistoupit. K tomu lze v rámci Firebase využít \emph{Hosting}.
+Webová aplikace musí být někde dostupná, aby k ní uživatelé mohli přistoupit. K tomu lze v rámci \emph{Firebase} využít \emph{Hosting}.
 Ten nabízí rychlé SSD disky, na kterých web běží, SSL certifikáty pro vlastní domény zdarma, jednoduchý \emph{deploy} nebo náhledy
 aplikace předtím než je nasazena na produkci.~\cite{FirebaseHosting}
 
 \subsection{Functions}
 \emph{Firebase Cloud Functions} mají za úkol vývojářům ulehčit vývoj backendu tak, aby nemuseli řešit záležitosti okolo správy serverů.
-Funkce, které na tomto systému běží, mohou reagovat na širokou škálu událostí uvnitř Firebase produktů. Například, pokud se do aplikace
+Funkce, které na tomto systému běží, mohou reagovat na širokou škálu událostí uvnitř \emph{Firebase} produktů. Například, pokud se do aplikace
 přihlásí nový uživatel, může se spustit funkce, která mu odešle uvítací email. Jako programovací jazyk se pro psaní funkcí použivá Node.js.~\cite{FirebaseFunctions}
 
 \section{Fulltextové vyhledávání}
-Při práci s Firebase jsem zjistil, že při dotazování se na záznamy není možné filtrovat podle názvu
+Při práci s \emph{Firebase} jsem zjistil, že při dotazování se na záznamy není možné filtrovat podle názvu
 (abych byl přesný, možné to je, ale není to vhodné). Po zkoumání dokumentace jsem našel stránku s doporučením pro
 fulltextové hledání. V nabídce byla tři řešení.~\cite{FulltextSearch}
 
@@ -91,10 +91,10 @@ fulltextové hledání. V nabídce byla tři řešení.~\cite{FulltextSearch}
 \end{itemize}
 
 Problém jsem řešil s vedoucím a přišli jsme na několik možných řešení sami. Stáhnout si data o všech receptech ve formátu
-\emph{id:name} a poté filtrovat výsledky hledání na FE. Dále bychom mohli použít Firebase Cloud Functions, kde bychom
+\emph{id:name} a poté filtrovat výsledky hledání na FE. Dále bychom mohli použít \emph{Firebase Cloud Functions}, kde bychom
 využili hashování. Nakonec jsem se ale rozhodl, že využiji jedno z nabízených řešení přímo Googlem.
 
-Vybral jsem Algolii~\cite{Algolia}, kvůli dobré podpoře Vue a Firebase, nejmenší složitosti implementace a bezplatnému základnímu plánu.
+Vybral jsem Algolii~\cite{Algolia}, kvůli dobré podpoře Vue a \emph{Firebase}, nejmenší složitosti implementace a bezplatnému základnímu plánu.
 
 Při vývoji jsem ale zjistil, že základní režim (tedy 10 000 čtení za měsíc) nejspíše stačit nebude. Nakonec jsem proto přešel na
 frontendové vyhledávání. Všechna data jsem stáhnul při načtení aplikace a poté s nimi dál pracoval.
@@ -117,8 +117,8 @@ Pro demonstraci rozdílu mezi MPA a SPA jsem zvolil následující diagramy.
     \caption{SPA Model} \label{picture:recipeo:spa-model}
 \end{figure}
 
-Jak je ve SPA diagramu vidět, některá data lze získat přímým přístupem do Firestore, ale jiná je nutné stáhnout z Functions.
-Je to dané tím, že u některých dat není možné ošetřit jejich bezpečnost pomocí Firestore Rules a je tedy nutné k nim přistupovat
+Jak je ve SPA diagramu vidět, některá data lze získat přímým přístupem do \emph{Firestore}, ale jiná je nutné stáhnout z Functions.
+Je to dané tím, že u některých dat není možné ošetřit jejich bezpečnost pomocí \emph{Firestore Rules} a je tedy nutné k nim přistupovat
 přes Functions, které má dostupné Admin SDK, tedy neomezený přístup k celé databázi. Data tak mohou být pro běžné uživatele nepřístupná,
 ale pomocí volání cloudové funkce přímo z aplikace je možné je stáhnout. Také se dají data tímto způsobem předzpracovat, což může
 být výhodné právě z hlediska bezpečnosti, a k uživateli se tak nedostane nic, co by nemělo.
