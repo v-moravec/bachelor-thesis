@@ -24,7 +24,7 @@ Po vyčerpání poloviny tohoto rozpočtu přijde upozornění na email správce
 Po založení se do projektu přidá aplikace. Díky tomu \emph{Firebase} vygeneruje kód, který se musí do aplikace přidat.
 Pomocí \mintinline{console}|npm install firebase| se do projektu přidá potřebný balíček. Poté je potřeba přidat vygenerovaný
 kód. Dále jsem nainstaloval přes \mintinline{console}|npm install -g firebase-tools| \emph{Firebase CLI}. Toto rozhraní umožní
-ovládání všech služeb, které \emph{Firebase} nabízí přímo z konzole. Nakonec je nutné se přihlásit (\mintinline{console}|firebase login|) a % TODO: Popsat config?
+ovládání všech služeb, které \emph{Firebase} nabízí přímo z konzole. Nakonec je nutné se přihlásit (\mintinline{console}|firebase login|)
 inicializovat projekt (\mintinline{console}|firebase init|). Při inicializaci je řada možností si vybrat, které služby jsou potřeba
 a které nikoliv. Je také možné nastavit automatický \emph{deploy} při nahrání kódu na \emph{Github}.
 
@@ -267,7 +267,6 @@ otevřených záložkách se stejnou aplikací~\cite{FirebaseMultipleTabs}.
     })
     \end{minted}
 \end{listing}
-% TODO: Navázat na sekci z designu
 
 Poté jsem vytvořil funkci, která se starala o to, odkud se mají data stahovat. Při každém stažení jsem si v \emph{local storage} aktualizoval
 časovou značku a díky tomu jsem mohl stahovat pouze data, se kterými mezitím bylo manipulováno. Zde se objevilo několik problémů. Jeden z nich
@@ -367,7 +366,3 @@ data, která odesílá server, a nemusel pokaždé čekat, než se funkce nahraj
 využil při problémech s právy. Několikrát se mi stalo, že funkce spadla či mi odepřela přístup. Pomocí emulátoru jsem tak zjistil, zda je špatně napsaná funkce
 nebo není správně nakonfigurovaná. Poté jsem našel v dokumentaci, že je potřeba u některých funkcí přidat roli pro autorizování volání funkce v Google
 Cloud platfomě~\cite{CloudRights}.
-
-% TODO: Problémy s přístupem k funkci https://console.cloud.google.com/functions/details/europe-west3/joinGroup?project=recipeo-2e1c9&authuser=0&hl=en&tab=permissions
-
-% TODO: Stylování aplikace a Vuetify
